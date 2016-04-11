@@ -159,12 +159,32 @@
 </body>
 
 </html>
-    <script src="/templates/js/vendor/jquery-1.11.2.min.js"></script>
-    <script src="/templates/js/vendor/bootstrap.min.js"></script>
-    <script src="/templates/js/vendor/flat-ui.js"></script>
-    <script src="/templates/js/vendor/video.js"></script>
-    <script src="/templates/js/main.js"></script>
-    <script src="/templates/js/vendor/pym.js"></script>
-    <script>
-    var pymChild = new pym.Child({id: "iframe-customer-supply"});
-    </script>
+<script src="/templates/js/vendor/jquery-1.11.2.min.js"></script>
+<script src="/templates/js/vendor/bootstrap.min.js"></script>
+<script src="/templates/js/vendor/flat-ui.js"></script>
+<script src="/templates/js/vendor/video.js"></script>
+<script src="/templates/js/main.js"></script>
+<script src="/templates/js/vendor/pym.js"></script>
+<script>
+$(document).ready(function() {
+    var pymChild = new pym.Child({
+        id: "iframe-customer-supply"
+    });
+    var imgnum = $("img").length;
+    var count1 = 0;
+    $("img").load(function() {
+        count1 = count1 + 1;
+        if (count1 == imgnum) {
+            pymChild.sendHeight();
+        }
+    });
+    var canvasnum = $("canvas").length;
+    var count2 = 0;
+    $("canvas").load(function() {
+        count2 = count2 + 1;
+        if (count2 == canvasnum) {
+            pymChild.sendHeight();
+        }
+    });
+});
+</script>

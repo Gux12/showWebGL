@@ -1,266 +1,221 @@
-<!DOCTYPE html>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<title>中视典数字科技 - WebVRP/Web3D/VRPIE/VRPHtml5 - 清华商务平台测试</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<style>
-			body {
-				font-family: Monospace;
-				background-color: #000;
-				color: #fff;
-				margin: 0px;
-				overflow: hidden;
-			}
-			#info {
-				color: #fff;
-				position: absolute;
-				top: 10px;
-				width: 100%;
-				text-align: center;
-				z-index: 100;
-				display:block;
-			}
-			#info a, .button { color: #f00; font-weight: bold; text-decoration: underline; cursor: pointer }
-		</style>
-	</head>
 
-	<body>
-		<div id="info">
-		<a href="http://www.vistandard.com/" target="_blank">中视典数字科技 </a> - WebVRP/Web3D/VRPIE/VRPHtml5  - 清华商务平台测试
-		</div>
-		<div id="browseInfo">
-		</div>
+<!DOCTYPE HTML>
+<html>
+<script type= "text/javascript">var isBuilderMode =false; var winFixWidth = 1024, winFixHeight = 768; var ResizePolicy = 3;</script>
+<head>
+	<title>New Project-EMP.VRP3D.COM</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name='viewport' content='width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0'>
+	<meta name="apple-touch-fullscreen" content="YES">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<script src="/templates/js/web3D/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+	<script src="/templates/js/web3D/js/three.js"></script>
+	<script src="/templates/js/web3D/js/TrackballControls.min.js" type="text/javascript"></script>
+	<script src="/templates/js/web3D/js/JsonIndexLoader.js"></script>
+	<script src="/templates/js/web3D/js/empBuilder.min.js" type="text/javascript"></script>
+	<script src="/templates/js/web3D/js/empRuntime.min.js" type="text/javascript"></script>
+	<script src="/templates/js/web3D/js/animo.min.js" type="text/javascript"></script>
+	<script src="/templates/js/web3D/js/stats.min.js" type="text/javascript"></script>
+	<script src="/templates/js/web3D/js/Detector.min.js" type="text/javascript"></script>
+	<script src="/templates/js/web3D/js/Tween.min.js" type="text/javascript"></script>
+	<link href="/templates/js/web3D/js/animate-animo.css" rel="stylesheet" type="text/css">
+	<script src="/templates/js/web3D/js/jgestures.min.js"  type="text/javascript"></script>
+	<script src="/templates/js/web3D/js/pageSwitch.min.js"  type="text/javascript"></script>
+</head>
 
-		<script src="/templates/car2/build/three.js"></script>
-		<script src="/templates/car2/build/JsonIndexLoader.js"></script>
-		<script src="/templates/car2/build/stats.min.js"></script>
-		<script src="/templates/car2/build/TrackballControls.js"></script>
-		<script src="/templates/car2/build/TransformControls.js"></script>
-		<script src="/templates/car2/build/Detector.js"></script>
-
-		<script>
-		
-			var emppath = "/templates/car2/tsinghua2_ani";
-			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
-			var container;
-			var container, stats;
-			var camera, scene, renderer, controls, viewTransCtrl;
-
-			var mouseX = 0, mouseY = 0;
-			//var boxlen, bbspere;
-			var bbspere = new THREE.Sphere();
-
-			var sceneBoundingBox = new THREE.Box3();
-			
-
-			var windowHalfX = window.innerWidth / 2;
-			var windowHalfY = window.innerHeight / 2;
-			
-			var mixer;
-			var clock = new THREE.Clock();
-
-			init();
-			animate1();
-
-
-			function init() {
-
-				container = document.createElement( 'div' );
-				document.body.appendChild( container );
-
-				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 10, 1000000 );
-				camera.position.z = 100;
-
-				controls = new THREE.TrackballControls( camera );
-				controls.rotateSpeed = 10.0;
-				controls.zoomSpeed = 1.2 ;
-				controls.panSpeed = 0.5;
-				controls.noZoom = false;
-				controls.noPan = false;
-				controls.staticMoving = true;
-				controls.dynamicDampingFactor = 0.3;
-				controls.keys = [ 65, 83, 68 ];
-				controls.addEventListener( 'change', render );
-
-				sceneBoundingBox.makeEmpty();
-
-				// scene
-
-				scene = new THREE.Scene();
-
-				//var ambient = new THREE.AmbientLight( 0x101030 );
-				var ambient = new THREE.AmbientLight( 0xffffff  );
-				scene.add( ambient );
-
-				var directionalLight = new THREE.DirectionalLight( 0xffffff, 2 );
-				directionalLight.position.set( -1, -1, -1 );
-				scene.add( directionalLight );
-
-							
-				//var light = new THREE.DirectionalLight( 0xffffff, 2 );
-				//light.position.set( 1, 1, 1 );
-				//scene.add( light );
-
-				// texture
-				mixer = new THREE.AnimationMixer( scene );
-
-				var manager = new THREE.LoadingManager();
-				manager.onProgress = function ( item, loaded, total ) {
-
-					//console.log( item, loaded, total );
-				};
-
-				var texture = new THREE.Texture();
-
-				var onProgress = function ( xhr ) {
-					if ( xhr.lengthComputable ) {
-						var percentComplete = xhr.loaded / xhr.total * 100;
-						//console.log( Math.round(percentComplete, 2) + '% downloaded' );
-					}
-				};
-
-				var onError = function ( xhr ) {
-				};
-
-				var loader = new THREE.JSONLoader(  );
-				var indexLoader = new THREE.JSONIndexLoader();
-				indexLoader.load( emppath + '/index.js',  function( jsonData ) { 
-				//console.log('jsonData:', jsonData.guid.length);
-				for( var i = 0; i< jsonData.guid.length; ++i )
-				{
-					var key = jsonData.guid[i];
-					loader.load( emppath + '/' + key +'.js',  
-								//function( geometry, materials, pos, scale, rot) { createScene2( geometry, materials[0],  pos, scale, rot)}  
-								function( geometry, materials, wts) { createScene2( geometry, materials[0],  wts)}  
-								);
-				}
-			} );
-
-				//function createScene2( geometry, material, pos, scale, rot) {
-				function createScene2( geometry, material, wts) {
-					
-					//console.log( ' pos:',pos[0], 1*pos[1], 1*pos[2], rot[0], ' rot:', 1*rot[1], 1*rot[2], 1*rot[3], ' scale:',scale[0], 1*scale[1], 1*scale[2])
-					//material.side = THREE.DoubleSide;
-					mesh1 = new THREE.Mesh( geometry, material );
-					mesh1.name = geometry.name;
-					mesh1.applyMatrix( wts );
-					/*
-					if( scale !== undefined )
-						mesh1.scale.set( scale[0], scale[1], scale[2] );
-					
-					//console.log("mat",pos, mesh1.position);
-					if( pos !== undefined )
-						mesh1.position.set( pos[0], pos[1],  pos[2] );
-						
-					if( rot !== undefined )
-						mesh1.quaternion.set( rot[0], rot[1], rot[2], rot[3] );
-					*/
-					//console.log( ' pos:',mesh1.position, ' rot:', mesh1.quaternion, ' scale:',mesh1.scale);
-					geometry.computeBoundingBox();
-					var bb = geometry.boundingBox;
-					bb.applyMatrix4( wts );
-					sceneBoundingBox.expandByPoint( bb.min );
-					sceneBoundingBox.expandByPoint( bb.max );
-
-
-					bbspere = sceneBoundingBox.getBoundingSphere(); //sceneBoundingBox.getBoundingSphere();
-					var bbcenter = sceneBoundingBox.center();
-					var boxlen = bbspere.radius;
-
-					camera.lookAt(bbcenter);
-					//camera.position.x =  bbcenter.x; //geometry.boundingBox.max.x *2 - geometry.boundingBox.min.x;
-					//camera.position.y =  bbcenter.y; //geometry.boundingBox.max.y *2 - geometry.boundingBox.min.y;
-					//camera.position.z =  sceneBoundingBox.max.z *2 - sceneBoundingBox.min.z;
-
-					scene.add( mesh1 );
-					
-					//console.log(  geometry );
-					if( geometry.animations)
-						//mixer.clipAction( geometry.animations[0], mesh1 )
-						//		.setDuration( 10 )			// one second
-						//		.startAt( 0/*- Math.random()*/ )	// random phase (already running)
-						//		.play();					// let's go
-						mixer.clipAction( geometry.animations[0] )
-								.setDuration( 166 )
-								.startAt( 0/*- Math.random()*/ )	// random phase (already running)
-								.play();					// let's go
-				}
-				
-				camera.position.set( 1393, 1094, 1098);
-
-
-				renderer = new THREE.WebGLRenderer({antialias:true});
-				renderer.setClearColor( 0x0 ); //lrt
-				renderer.setPixelRatio( window.devicePixelRatio );
-				renderer.setSize( window.innerWidth, window.innerHeight );
-				container.appendChild( renderer.domElement );
-
-				window.addEventListener( 'resize', onWindowResize, false );
-				stats = new Stats();
-				stats.domElement.style.position = 'absolute';
-				stats.domElement.style.top = '0px';
-				container.appendChild( stats.domElement );
-
-
-			}
-
-			function onWindowResize() {
-
-				windowHalfX = window.innerWidth / 2;
-				windowHalfY = window.innerHeight / 2;
-
-				camera.aspect = window.innerWidth / window.innerHeight;
-				camera.updateProjectionMatrix();
-
-				renderer.setSize( window.innerWidth, window.innerHeight );
-
-				controls.handleResize();
-
-				//console.log(window.innerWidth, window.innerHeight);
-
-			}
-
-			function onDocumentMouseMove( event ) {
-
-				mouseX = ( event.clientX - windowHalfX ) / 2;
-				mouseY = ( event.clientY - windowHalfY ) / 2;
-			}
-			function onDocumentTouchMove( event ) {
-				mouseX = ( event.clientX - windowHalfX ) / 2;
-				mouseY = ( event.clientY - windowHalfY ) / 2;
-
-			}
-
-			function animate1() {
-				requestAnimationFrame( animate1 );
-
- 
-				var vec3len = camera.position.distanceTo( bbspere.center);
-				var lenmin = Math.max(10, vec3len - bbspere.radius );
-				var lenMax = vec3len + bbspere.radius;
-				camera.near =  lenmin ;
-				camera.far = lenMax ;
-
-				//console.log(camera.near, camera.far, camera.position, bbspere.center);
-				controls.update();
-				stats.update();
-				
-				var delta = clock.getDelta();
-				if( mixer)
-					mixer.update( delta );
-					
-				render();
-			}
-
-			function render() {
-
-				renderer.render( scene, camera );
-
-			}
-
-		</script>
-
-	</body>
+<body style="position:absolute;  background-color:#3a3a3a; background-image:url('/templates/car3/resources/汽车展示合_图层0.png');background-size:100% 100%;background-repeat:no-repeat; background-attachment:fixed; margin-top: 0px;margin-bottom: 0px;margin-left: 0px;margin-right: 0px;-webkit-touch-callout:none;-webkit-user-select:none;">
+</body>
 </html>
+
+<script type="text/javascript">
+ var EmpFirstShowPage = { 'pages':['328025549-555962254-2129857797-1769827767','END'],'first':0}; 
+ var PageInitFunc = {}; 
+ var PageExitFunc = {};  
+
+   window.addEventListener("load",  (function(){ if( PageInitFunc['328025549-555962254-2129857797-1769827767'] ) PageInitFunc['328025549-555962254-2129857797-1769827767'](); } ), false);  
+</script>
+<script type= "text/javascript">
+(function(){ /* page:  汽车展示合_1 */
+    var pageElement = empGetElementByID('328025549-555962254-2129857797-1769827767', 'div', null);   
+    pageElement.style.cssText = " background-color:rgba(138,0,0,0);position:absolute;margin:0px 0px 0px 0px ;width:1024px;height:768px;  z-index: 1;overflow:hidden;display:none;";   
+ PageInitFunc['328025549-555962254-2129857797-1769827767'] = (function(){  /*empShowElementByID('1421555384-1552117900-707152488-937763923', 'hidden');  empShowElementByID('1691582227-1485258816-650407005-2039880589', 'visible');  empShowElementByID('513083203-513561875-706164739-1153835674', 'hidden');*/  _124324387819802023771476550153307121760.enable();  } ); 
+ PageExitFunc['328025549-555962254-2129857797-1769827767'] = (function(){  _124324387819802023771476550153307121760.disable();  } );  
+})();
+
+(function(){ /*  3DScene:  3D场景_1  */ 					 
+    var pageElement213 = empGetElementByID('328025549-555962254-2129857797-1769827767', 'div', null);  					 
+    var itemElement = empGetElementByID('1243243878-1980202377-1476550153-307121760', 'div', pageElement213); 					 
+    pageElement213.appendChild(itemElement); 					 
+    itemElement.style.cssText = "pointer-events:auto;position:absolute;left:0px;top:0px;width:1024px;height:768px;opacity:1;transform-origin:50% 50%;-webkit-transform-origin:50% 50%;-moz-transform-origin:50% 50%;-o-transform-origin:50% 50%;-ms-transform-origin:50% 50%;transform:translate(0px,0px) rotate(0deg) skew(0deg,0deg) scale(1,1);  z-index:8;";  					 
+ })();  					 
+ var _124324387819802023771476550153307121760 = create3dScene('1243243878-1980202377-1476550153-307121760', 1024, 768, 0xffffff,0 ); 
+ if( _124324387819802023771476550153307121760) {
+  (function(){  
+//car1 23,0,0  47,13,33
+//car2     8015,6463,9381
+ var EmpCamera = _124324387819802023771476550153307121760.camera; 		   
+ EmpCamera.fov = 45;  EmpCamera.near  = 1;  EmpCamera.far = 10000; 	   		   
+ EmpCamera.position.set(  1393, 1094, 1098 );  EmpCamera.lookAt( 0,0,0 );  EmpCamera.up.set( 0,1,0 );   		   
+	 //_124324387819802023771476550153307121760.controls.target.set(  0,0,0 ) ; 
+	 _124324387819802023771476550153307121760.controls.maxDistance = 20000 ; 		   
+ EmpCamera.updateProjectionMatrix();  	})();
+ 
+	 _124324387819802023771476550153307121760.loadEmpObjs('/templates/car2/tsinghua2_ani/index.js' , 'car1', '', {autoPlay:true});
+ (function(){ 		   
+	 var defaultLight = _124324387819802023771476550153307121760.findObjectByName('_1433554002181051684713614094411073901394'); 		   
+	 if( !defaultLight) {	   		   
+			defaultLight = new THREE.AmbientLight( 0xaaaaaa ); 	defaultLight.name = '_1433554002181051684713614094411073901394'; 		   
+			_124324387819802023771476550153307121760.addObject( defaultLight); 		   
+	 } 		   
+	 else { 		   
+			defaultLight.color.set( 0xaaaaaa ); 		   
+	 }		   
+			defaultLight.visible = true;    		   
+	})();
+ (function(){ 		   
+	 var defaultLight = _124324387819802023771476550153307121760.findObjectByName('_1413231199170667129609714301060068242'); 		   
+	 if( !defaultLight) {	   		   
+			defaultLight = new THREE.DirectionalLight( 0xffffff, 0.7 ); 	defaultLight.name = '_1413231199170667129609714301060068242'; 		   
+			_124324387819802023771476550153307121760.addObject( defaultLight); 		   
+	 } 		   
+	 else { 		   
+			defaultLight.color.set( 0xffffff );  defaultLight.intensity = 0.5; 		   
+	 }		   
+		   defaultLight.visible = true;     
+ 
+ })(); 
+ _124324387819802023771476550153307121760.showSkybox(false);
+ 
+ var modelIndex = 0;
+(function(){ /* imagediv:  汽车展示合_红色  */ 
+    var pageElement213 = empGetElementByID('328025549-555962254-2129857797-1769827767', 'div', null);  
+    var itemElement = empGetElementByID('1069485067-250438055-1598434611-914172707', 'div', pageElement213); 
+    pageElement213.appendChild(itemElement); 
+    itemElement.style.cssText = "pointer-events:auto; background-image:url('/templates/car3/resources/汽车展示合_红色.png');background-repeat:no-repeat;background-position:center center;position:absolute;left:227px;top:694px;width:142px;height:50px;opacity:1;transform-origin:50% 50%;-webkit-transform-origin:50% 50%;-moz-transform-origin:50% 50%;-o-transform-origin:50% 50%;-ms-transform-origin:50% 50%;transform:translate(0px,0px) rotate(0deg) skew(0deg,0deg) scale(1,1);  z-index:10;";  
+    jQuery('#1069485067-250438055-1598434611-914172707').bind('tapone',  function(event){  /*empShowElementByID('1421555384-1552117900-707152488-937763923', 'hidden');  empShowElementByID('1691582227-1485258816-650407005-2039880589', 'hidden');  empShowElementByID('513083203-513561875-706164739-1153835674', 'visible');  var chemat = _124324387819802023771476550153307121760.getMaterialByObjName('car1_Mesh12'); if(chemat) { chemat.color.setRGB(1.0, 0.05, 0 ); }*/
+	
+	++modelIndex;
+	if( modelIndex % 3 == 1 )
+	{
+		_124324387819802023771476550153307121760.showGroupByName("car1", true);
+		_124324387819802023771476550153307121760.showGroupByName("car2", false);
+		_124324387819802023771476550153307121760.showGroupByName("car3", false);
+		var center = _124324387819802023771476550153307121760.getGroupBoundingBox('car1').center();
+		_124324387819802023771476550153307121760.switchToCameraAni(center,  new THREE.Vector3(47,13,33), 2000);
+	}
+	else if( modelIndex % 3 == 2 )
+	{
+		_124324387819802023771476550153307121760.showGroupByName("car1", false);
+		_124324387819802023771476550153307121760.showGroupByName("car2", true);
+		_124324387819802023771476550153307121760.showGroupByName("car3", false);
+		var center = _124324387819802023771476550153307121760.getGroupBoundingBox('car2').center();
+		_124324387819802023771476550153307121760.switchToCameraAni(center,  new THREE.Vector3(8015,6463,9381), 2000);
+	}
+	else if( modelIndex % 3 == 0 )
+	{
+		_124324387819802023771476550153307121760.showGroupByName("car1", false);
+		_124324387819802023771476550153307121760.showGroupByName("car2", false);
+		_124324387819802023771476550153307121760.showGroupByName("car3", true);
+		var center = _124324387819802023771476550153307121760.getGroupBoundingBox('car3').center();
+		_124324387819802023771476550153307121760.switchToCameraAni(center,  new THREE.Vector3(71,26,27), 2000);
+	}
+
+	} );
+})();
+
+(function(){ /* imagediv:  汽车展示合_红色点击  */ 
+    var pageElement213 = empGetElementByID('328025549-555962254-2129857797-1769827767', 'div', null);  
+    var itemElement = empGetElementByID('513083203-513561875-706164739-1153835674', 'div', pageElement213); 
+    pageElement213.appendChild(itemElement); 
+    itemElement.style.cssText = "pointer-events:auto;visibility:hidden; background-image:url('/templates/car3/resources/汽车展示合_红色点击.png');background-repeat:no-repeat;background-position:center center;position:absolute;left:227px;top:694px;width:142px;height:50px;opacity:1;transform-origin:50% 50%;-webkit-transform-origin:50% 50%;-moz-transform-origin:50% 50%;-o-transform-origin:50% 50%;-ms-transform-origin:50% 50%;transform:translate(0px,0px) rotate(0deg) skew(0deg,0deg) scale(1,1);  z-index:20;";  
+})();
+
+var colorIndex = 0;
+
+(function(){ /* imagediv:  汽车展示合_黑色  */ 
+    var pageElement213 = empGetElementByID('328025549-555962254-2129857797-1769827767', 'div', null);  
+    var itemElement = empGetElementByID('1169492942-1001796626-1186078697-343038974', 'div', pageElement213); 
+    pageElement213.appendChild(itemElement); 
+    itemElement.style.cssText = "pointer-events:auto; background-image:url('/templates/car3/resources/汽车展示合_黑色.png');background-repeat:no-repeat;background-position:center center;position:absolute;left:440px;top:694px;width:143px;height:50px;opacity:1;transform-origin:50% 50%;-webkit-transform-origin:50% 50%;-moz-transform-origin:50% 50%;-o-transform-origin:50% 50%;-ms-transform-origin:50% 50%;transform:translate(0px,0px) rotate(0deg) skew(0deg,0deg) scale(1,1);  z-index:30;";  
+    jQuery('#1169492942-1001796626-1186078697-343038974').bind('tapone',  function(event){  /*empShowElementByID('1421555384-1552117900-707152488-937763923', 'hidden');  empShowElementByID('1691582227-1485258816-650407005-2039880589', 'visible');  empShowElementByID('513083203-513561875-706164739-1153835674', 'hidden'); 
+	var chemat = _124324387819802023771476550153307121760.getMaterialByObjName('car1_Mesh12'); if(chemat) { chemat.color.setRGB(0.1, 0.1, 0.1 ); } */ 
+	if( modelIndex % 3 == 1 )
+	{
+		var chemat = _124324387819802023771476550153307121760.getMaterialByObjName('car1_Mesh12'); 
+		if(chemat) { 
+			if( colorIndex %3 == 0)
+				chemat.color.setRGB(1.0, 0.05, 0 ); 
+			else if( colorIndex %3 == 1 )
+				chemat.color.setRGB(1.0, 1, 1 ); 
+			else 
+				chemat.color.setRGB(0.1, 0.1, 0.1 ); 
+				
+			++colorIndex;
+		}
+	}
+	else if( modelIndex % 3 == 2 )
+	{
+		var chemat = _124324387819802023771476550153307121760.getMaterialByObjName('car2_Mesh07'); 
+		var textureLoader = new THREE.TextureLoader();
+		var texture;
+		if( colorIndex %3 == 0)
+			texture = textureLoader.load( 'tsinghua2_car2/a0700.png' );
+		else if( colorIndex %3 == 1 )
+			texture = textureLoader.load( 'tsinghua2_car2/a0710.png' );
+		else 
+			texture = textureLoader.load( 'tsinghua2_car2/a0720.png' );
+				
+		if( texture )
+			chemat.map = texture;
+		++colorIndex;
+		
+	}
+	else if( modelIndex % 3 == 0 )
+	{
+		var chemat = _124324387819802023771476550153307121760.getMaterialByObjName('car3_Mesh05'); 
+		console.log( chemat );
+		if(chemat) { 
+			if( colorIndex %3 == 0)
+				chemat.color.setRGB(1.0, 0.05, 0 ); 
+			else if( colorIndex %3 == 1 )
+				chemat.color.setRGB(1.0, 1, 1 ); 
+			else 
+				chemat.color.setRGB(0.1, 0.1, 0.1 ); 
+				
+			++colorIndex;
+		}
+	}
+	
+	
+	} );
+})();
+
+(function(){ /* imagediv:  汽车展示合_黑色点击  */ 
+    var pageElement213 = empGetElementByID('328025549-555962254-2129857797-1769827767', 'div', null);  
+    var itemElement = empGetElementByID('1691582227-1485258816-650407005-2039880589', 'div', pageElement213); 
+    pageElement213.appendChild(itemElement); 
+    itemElement.style.cssText = "pointer-events:auto;visibility:hidden; background-image:url('/templates/car3/resources/汽车展示合_黑色点击.png');background-repeat:no-repeat;background-position:center center;position:absolute;left:440px;top:694px;width:143px;height:50px;opacity:1;transform-origin:50% 50%;-webkit-transform-origin:50% 50%;-moz-transform-origin:50% 50%;-o-transform-origin:50% 50%;-ms-transform-origin:50% 50%;transform:translate(0px,0px) rotate(0deg) skew(0deg,0deg) scale(1,1);  z-index:40;";  
+})();
+
+(function(){ /* imagediv:  汽车展示合_白色  */ 
+    var pageElement213 = empGetElementByID('328025549-555962254-2129857797-1769827767', 'div', null);  
+    var itemElement = empGetElementByID('1840730172-1510945565-1682865117-1396528295', 'div', pageElement213); 
+    pageElement213.appendChild(itemElement); 
+    itemElement.style.cssText = "pointer-events:auto; background-image:url('/templates/car3/resources/汽车展示合_白色.png');background-repeat:no-repeat;background-position:center center;position:absolute;left:655px;top:694px;width:142px;height:50px;opacity:1;transform-origin:50% 50%;-webkit-transform-origin:50% 50%;-moz-transform-origin:50% 50%;-o-transform-origin:50% 50%;-ms-transform-origin:50% 50%;transform:translate(0px,0px) rotate(0deg) skew(0deg,0deg) scale(1,1);  z-index:50;";  
+    jQuery('#1840730172-1510945565-1682865117-1396528295').bind('tapone',  function(event){  empShowElementByID('1421555384-1552117900-707152488-937763923', 'visible');  empShowElementByID('1691582227-1485258816-650407005-2039880589', 'hidden');  empShowElementByID('513083203-513561875-706164739-1153835674', 'hidden');  var chemat = _124324387819802023771476550153307121760.getMaterialByObjName('car1_Mesh12'); if(chemat) { chemat.color.setRGB(1.0, 1, 1 ); } 
+	_124324387819802023771476550153307121760.showGroupByName("car2", true);
+	} );
+})();
+
+(function(){ /* imagediv:  汽车展示合_白色点击  */ 
+    var pageElement213 = empGetElementByID('328025549-555962254-2129857797-1769827767', 'div', null);  
+    var itemElement = empGetElementByID('1421555384-1552117900-707152488-937763923', 'div', pageElement213); 
+    pageElement213.appendChild(itemElement); 
+    itemElement.style.cssText = "pointer-events:auto;visibility:hidden; background-image:url('/templates/car3/resources/汽车展示合_白色点击.png');background-repeat:no-repeat;background-position:center center;position:absolute;left:655px;top:694px;width:142px;height:50px;opacity:1;transform-origin:50% 50%;-webkit-transform-origin:50% 50%;-moz-transform-origin:50% 50%;-o-transform-origin:50% 50%;-ms-transform-origin:50% 50%;transform:translate(0px,0px) rotate(0deg) skew(0deg,0deg) scale(1,1);  z-index:60;";  
+})();
+
+
+}/*addChildrenItems end*/
+</script>

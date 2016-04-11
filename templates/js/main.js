@@ -1,19 +1,16 @@
 var scene3dArray = [];
 $(document).ready(function() {
     var pattern = new RegExp("\\\"(.| )+?\\\"", "igm");
-    if ($('#psycho').height() != 0) {
-        $('#my-options').css('top', $('#psycho').height() - $('#my-options').height());
-        $('#my-options').css('visibility', 'visible');
-    } else {
-        $('#psycho').load(function() {
+    $('#my-options').css('visibility', 'visible');
+    var imgnum = $("img").length;
+    var count1 = 0;
+    $("img").load(function() {
+        count1 = count1 + 1;
+        if (count1 == imgnum) {
             $('#my-options').css('top', $('#psycho').height() - $('#my-options').height());
             $('#my-options').css('visibility', 'visible');
-        })
-    }
-    $(window).resize(function() {
-        $('#my-options').css('top', $('#psycho').height() - $('#my-options').height());
+        }
     });
-
 
     var imgimac = $('#imac');
     src = imgimac.css('background-image');
@@ -57,7 +54,7 @@ $(document).ready(function() {
 
 
     //我的需求
-    $("select").select2();
+    $("select").select2({dropdownCssClass: 'dropdown-inverse'});
     $(".btn-confirm-order").click(function() {
         $(this).toggleClass("btn-primary");
         $(this).toggleClass("btn-danger");
@@ -73,12 +70,12 @@ $(document).ready(function() {
         }
     })
 
-
-    $('#cloth-size').change(function() {})
-
     //我的供给显示和隐藏
     $('.items-sold').click(function() {
         var cloth = this.dataset.clothType;
         this.href = "home_customer_supply_step2_" + cloth + ".html";
     });
+
+
+    // $('*').off("scroll");
 });

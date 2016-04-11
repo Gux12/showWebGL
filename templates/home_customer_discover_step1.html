@@ -21,11 +21,11 @@
 </head>
 
 <body>
-<img src="/templates/img/customer_discover/u0.gif" alt="" style="width: 100%">
-<a class="btn btn-primary btn-lg" href="/templates/home_customer_discover_step2_moment.html" style="position: absolute;top: 40%;left: 15%">我的朋友圈</a>
-<a class="btn btn-primary btn-lg" href="/templates/home_customer_discover_step2_client.html" style="position: absolute;top: 20%;left: 35%">我的客户</a>
-<a class="btn btn-primary btn-lg" href="/templates/home_customer_discover_step2_supply.html" style="position: absolute;top: 20%;left: 55%">我的供应商</a>
-<a class="btn btn-primary btn-lg" href="/templates/home_customer_discover_step2_focus.html" style="position: absolute;top: 40%;left: 75%">我的关注</a>
+    <img src="/templates/img/customer_discover/u0.gif" alt="" style="width: 100%">
+    <a class="btn btn-primary btn-lg" href="/templates/home_customer_discover_step2_moment.html" style="position: absolute;top: 40%;left: 15%">我的朋友圈</a>
+    <a class="btn btn-primary btn-lg" href="/templates/home_customer_discover_step2_client.html" style="position: absolute;top: 20%;left: 35%">我的客户</a>
+    <a class="btn btn-primary btn-lg" href="/templates/home_customer_discover_step2_supply.html" style="position: absolute;top: 20%;left: 55%">我的供应商</a>
+    <a class="btn btn-primary btn-lg" href="/templates/home_customer_discover_step2_focus.html" style="position: absolute;top: 40%;left: 75%">我的关注</a>
 </body>
 
 </html>
@@ -39,9 +39,22 @@
 $(document).ready(function() {
     var pymChild = new pym.Child({
         id: "iframe-customer-discover"
-    });  
+    });
+    var imgnum = $("img").length;
+    var count1 = 0;
     $("img").load(function() {
-        pymChild.sendHeight();
+        count1 = count1 + 1;
+        if (count1 == imgnum) {
+            pymChild.sendHeight();
+        }
+    });
+    var canvasnum = $("canvas").length;
+    var count2 = 0;
+    $("canvas").load(function() {
+        count2 = count2 + 1;
+        if (count2 == canvasnum) {
+            pymChild.sendHeight();
+        }
     });
 });
 </script>

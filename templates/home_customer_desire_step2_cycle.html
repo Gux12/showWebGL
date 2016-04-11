@@ -836,12 +836,14 @@ $(document).ready(function() {
             pymParent31.sendWidth();
             pymParent32.sendWidth();
             pymParent33.sendWidth();
+            pymChild.sendHeight();
             // document.location.href='#'+this.id;
         });
         $(this.dataset.target).on('hidden.bs.collapse', function() {
             pymParent31.sendWidth();
             pymParent32.sendWidth();
             pymParent33.sendWidth();
+            pymChild.sendHeight();
         });
     });
     pymParent31.onMessage('height', function() {
@@ -861,6 +863,22 @@ $(document).ready(function() {
         $(this.dataset.target).on('hidden.bs.collapse', function() {
             pymChild.sendHeight();
         });
+    });
+    var imgnum = $("img").length;
+    var count1 = 0;
+    $("img").load(function() {
+        count1 = count1 + 1;
+        if (count1 == imgnum) {
+            pymChild.sendHeight();
+        }
+    });
+    var canvasnum = $("canvas").length;
+    var count2 = 0;
+    $("canvas").load(function() {
+        count2 = count2 + 1;
+        if (count2 == canvasnum) {
+            pymChild.sendHeight();
+        }
     });
 });
 </script>

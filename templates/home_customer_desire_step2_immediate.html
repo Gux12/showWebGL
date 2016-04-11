@@ -52,9 +52,9 @@
                         <th><strong>型号</strong></th>
                         <td>
                             <select id="car-type" class="form-control select select-inverse select-block">
-                                <option value="2015款 EV200 轻快版">2015款 EV200 轻快版</option>
-                                <option value="2015款 EV200 轻秀版">2015款 EV200 轻秀版</option>
-                                <option value="2015款 EV200 轻享版">2015款 EV200 轻享版</option>
+                                <option value="car2">EU260</option>
+                                <option value="car1">ES210</option>
+                                <option value="car3">EV200</option>
                             </select>
                         </td>
                     </tr>
@@ -62,9 +62,9 @@
                         <th><strong>颜色</strong></th>
                         <td>
                             <select id="car-color" class="form-control select select-inverse select-block">
-                                <option value="黑色">黑色</option>
-                                <option value="白色">白色</option>
-                                <option value="红色">红色</option>
+                                <option value="white">白色</option>
+                                <option value="khaki">卡其色</option>  
+                                <option value="red">红色</option>
                             </select>
                         </td>
                     </tr>
@@ -96,8 +96,9 @@
                 <button class="btn btn-inverse btn-chain" type="button" data-toggle="collapse" data-target="#immediate-supply-chain" aria-expanded="false" aria-controls="immediate-supply-chain" style="width: 50%">主动供应链</button>
             </div>
         </div>
-        <!-- <div class="col-md-5" id="web3d_car" style="height:500px">
-                                    </div> -->
+        <div class="col-md-5" style="height:500px">
+            <iframe id="web3d_car" src="/car3_3" frameborder="0" height="100%"></iframe>
+        </div>
     </div>
     <div class="row collapse" id="immediate-smart-supply-chain" style="text-align: center;">
         <div id="iframe-individual-smart-supply-chain"></div>
@@ -378,5 +379,71 @@ $(document).ready(function() {
             pymChild.sendHeight();
         });
     });
+    var imgnum = $("img").length;
+    var count1 = 0;
+    $("img").load(function() {
+        count1 = count1 + 1;
+        if (count1 == imgnum) {
+            pymChild.sendHeight();
+        }
+    });
+    var canvasnum = $("canvas").length;
+    var count2 = 0;
+    $("canvas").load(function() {
+        count2 = count2 + 1;
+        if (count2 == canvasnum) {
+            pymChild.sendHeight();
+        }
+    });
+    $('#car-type').change(function(event) {
+        var ifr = document.getElementById('web3d_car');
+        var color = $('#car-color').val();
+        var car = this.value;
+        if (car == "car1") {
+            ifr.contentWindow.showCarModel('car1', true);
+        } else if (car == "car2") {
+            ifr.contentWindow.showCarModel('car2', true);
+        } else if (car == "car3") {
+            ifr.contentWindow.showCarModel('car3', true);
+        }
+        if (color == "khaki") {
+            ifr.contentWindow.setCarColor(car, {
+                color: [0.76, 0.69, 0.57],
+                imgFile: '/templates/car3/tsinghua2_car2/a0720.png'
+            });
+        } else if (color == "white") {
+            ifr.contentWindow.setCarColor(car, {
+                color: [1, 1, 1],
+                imgFile: '/templates/car3/tsinghua2_car2/a0700.png'
+            });
+        } else if (color == "red") {
+            ifr.contentWindow.setCarColor(car, {
+                color: [1, 0.1, 0],
+                imgFile: '/templates/car3/tsinghua2_car2/a0710.png'
+            });
+        }
+    });
+    $('#car-color').change(function(event) {
+        var ifr = document.getElementById('web3d_car');
+        var color = this.value;
+        var car = $('#car-type').val();
+        if (color == "khaki") {
+            ifr.contentWindow.setCarColor(car, {
+                color: [0.76, 0.69, 0.57],
+                imgFile: '/templates/car3/tsinghua2_car2/a0720.png'
+            });
+        } else if (color == "white") {
+            ifr.contentWindow.setCarColor(car, {
+                color: [1, 1, 1],
+                imgFile: '/templates/car3/tsinghua2_car2/a0700.png'
+            });
+        } else if (color == "red") {
+            ifr.contentWindow.setCarColor(car, {
+                color: [1, 0.1, 0],
+                imgFile: '/templates/car3/tsinghua2_car2/a0710.png'
+            });
+        }
+    });
+
 });
 </script>

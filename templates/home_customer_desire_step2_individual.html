@@ -53,11 +53,31 @@
                         </td>
                     </tr>
                     <tr>
+                        <th><strong>性别</strong></th>
+                        <td>
+                            <select id="cloth-gender" class="form-control select select-inverse select-block">
+                                <option value="man" check>男</option>
+                                <option value="woman">女</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
                         <th><strong>尺寸</strong></th>
                         <td>
                             <select id="cloth-size" class="form-control select select-inverse select-block">
-                                <option value="大号" check>大号</option>
-                                <option value="中号">中号</option>
+                                <option value="big" check>大号</option>
+                                <option value="mid">中号</option>
+                                <option value="small">小号</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><strong>颜色</strong></th>
+                        <td>
+                            <select id="cloth-color" class="form-control select select-inverse select-block">
+                                <option value="white" check>白色</option>
+                                <option value="blue">蓝色</option>
+                                <option value="red">红色</option>
                             </select>
                         </td>
                     </tr>
@@ -70,18 +90,6 @@
                                 <option value="纯羊毛精纺">纯羊毛精纺</option>
                                 <option value="纯羊毛粗纺">纯羊毛粗纺</option>
                                 <option value="纯化纤仿毛">纯化纤仿毛</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><strong>颜色</strong></th>
-                        <td>
-                            <select class="form-control select select-inverse select-block">
-                                <option value="蓝色">蓝色</option>
-                                <option value="灰色">灰色</option>
-                                <option value="黑色">黑色</option>
-                                <option value="白色">白色</option>
-                                <option value="红色">红色</option>
                             </select>
                         </td>
                     </tr>
@@ -113,7 +121,8 @@
                 <button class="btn btn-inverse btn-chain" type="button" data-toggle="collapse" data-target="#individual-supply-chain" aria-expanded="false" aria-controls="individual-supply-chain" style="width: 50%">主动供应链</button>
             </div>
         </div>
-        <div class="col-md-5" id="web3d_cloth" style="height:500px">
+        <div class="col-md-5" style="height:500px">
+            <iframe src="/cloth3" frameborder="0" id="web3d_cloth" height="100%"></iframe>
         </div>
     </div>
     <div class="row collapse" id="individual-smart-supply-chain" style="text-align: center;">
@@ -370,12 +379,6 @@
 <script src="/templates/js/vendor/video.js"></script>
 <script src="/templates/js/vendor/pym.js"></script>
 <script src="/templates/js/main.js"></script>
-<script src="/templates/cloth3/build/three.js"></script>
-<script src="/templates/cloth3/build/JsonIndexLoader.js"></script>
-<script src="/templates/cloth3/build/stats.min.js"></script>
-<script src="/templates/cloth3/build/TrackballControls.js"></script>
-<script src="/templates/cloth3/build/TransformControls.js"></script>
-<script src="/templates/cloth3/build/Detector.js"></script>
 <script>
 $(document).ready(function() {
     var pymChild = new pym.Child({
@@ -403,217 +406,46 @@ $(document).ready(function() {
             pymChild.sendHeight();
         });
     });
+    var imgnum = $("img").length;
+    var count1 = 0;
+    $("img").load(function() {
+        count1 = count1 + 1;
+        if (count1 == imgnum) {
+            pymChild.sendHeight();
+        }
+    });
+    var canvasnum = $("canvas").length;
+    var count2 = 0;
+    $("canvas").load(function() {
+        count2 = count2 + 1;
+        if (count2 == canvasnum) {
+            pymChild.sendHeight();
+        }
+    });
+
+
+
+    $('#cloth-gender').change(function(event) {
+        var ifr = document.getElementById('web3d_cloth');
+        var gender = $('#cloth-gender').val();
+        var size = $('#cloth-size').val();
+        var color = $('#cloth-color').val();
+        ifr.contentWindow.showModel(gender,size,color);
+    });
+    $('#cloth-size').change(function(event) {
+        var ifr = document.getElementById('web3d_cloth');
+        var gender = $('#cloth-gender').val();
+        var size = $('#cloth-size').val();
+        var color = $('#cloth-color').val();
+        ifr.contentWindow.showModel(gender,size,color);
+    });
+    $('#cloth-color').change(function(event) {
+        var ifr = document.getElementById('web3d_cloth');
+        var gender = $('#cloth-gender').val();
+        var size = $('#cloth-size').val();
+        var color = $('#cloth-color').val();
+        ifr.contentWindow.showModel(gender,size,color);
+    });
 });
-</script>
-<script>
-var emppath = "/templates/cloth3/tsinghua2_ani";
-if (!Detector.webgl) Detector.addGetWebGLMessage();
-var container;
-var camera, scene, renderer, controls, viewTransCtrl;
 
-var mouseX = 0,
-    mouseY = 0;
-//var boxlen, bbspere;
-var bbspere = new THREE.Sphere();
-
-var sceneBoundingBox = new THREE.Box3();
-
-
-var windowHalfX = window.innerWidth / 2;
-var windowHalfY = window.innerHeight / 2;
-
-var mixer;
-var clock = new THREE.Clock();
-
-init();
-animate1();
-
-
-function init() {
-
-    //container = document.createElement('div');
-    //var fatherDiv = document.getElementById('web3d_cloth');
-    //fatherDiv.appendChild(container);
-    container = document.getElementById('web3d_cloth');
-
-    camera = new THREE.PerspectiveCamera(45, container.offsetWidth / container.offsetHeight, 0.1, 1000000);
-    camera.position.z = 100;
-
-    console.log("div size:", container.offsetWidth, container.offsetHeight);
-
-    controls = new THREE.TrackballControls(camera);
-    controls.rotateSpeed = 10.0;
-    controls.zoomSpeed = 1.2;
-    controls.panSpeed = 0.5;
-    controls.noZoom = false;
-    controls.noPan = false;
-    controls.staticMoving = true;
-    controls.dynamicDampingFactor = 0.3;
-    controls.keys = [65, 83, 68];
-    controls.addEventListener('change', render);
-
-    sceneBoundingBox.makeEmpty();
-
-    // scene
-
-    scene = new THREE.Scene();
-
-    //var ambient = new THREE.AmbientLight( 0x101030 );
-    var ambient = new THREE.AmbientLight(0xffffff);
-    scene.add(ambient);
-
-    var directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
-    directionalLight.position.set(1, 1, 1);
-    directionalLight.intensity = 0.5;
-    scene.add(directionalLight);
-
-
-    // texture
-    mixer = new THREE.AnimationMixer(scene);
-
-    var manager = new THREE.LoadingManager();
-    manager.onProgress = function(item, loaded, total) {
-
-        //console.log( item, loaded, total );
-    };
-
-    var texture = new THREE.Texture();
-
-    var onProgress = function(xhr) {
-        if (xhr.lengthComputable) {
-            var percentComplete = xhr.loaded / xhr.total * 100;
-            //console.log( Math.round(percentComplete, 2) + '% downloaded' );
-        }
-    };
-
-    var onError = function(xhr) {};
-
-    var loader = new THREE.JSONLoader();
-    var indexLoader = new THREE.JSONIndexLoader();
-    indexLoader.load(emppath + '/index.js', function(jsonData) {
-        //console.log('jsonData:', jsonData.guid.length);
-        for (var i = 0; i < jsonData.guid.length; ++i) {
-            var key = jsonData.guid[i];
-            loader.load(emppath + '/' + key + '.js',
-                //function( geometry, materials, pos, scale, rot) { createScene2( geometry, materials[0],  pos, scale, rot)}  
-                function(geometry, materials, wts) {
-                    createScene2(geometry, materials[0], wts)
-                }
-            );
-        }
-    });
-
-    //function createScene2( geometry, material, pos, scale, rot) {
-    function createScene2(geometry, material, wts) {
-
-        geometry.computeBoundingBox();
-        geometry.computeBoundingSphere();
-
-        geometry.computeFaceNormals();
-        geometry.computeVertexNormals();
-        mesh1 = new THREE.Mesh(geometry, material);
-        mesh1.name = geometry.name;
-        mesh1.applyMatrix(wts);
-
-        var bb = geometry.boundingBox;
-        //bb.applyMatrix4(wts);
-        sceneBoundingBox.expandByPoint(bb.min);
-        sceneBoundingBox.expandByPoint(bb.max);
-
-        bbspere = sceneBoundingBox.getBoundingSphere(); //sceneBoundingBox.getBoundingSphere();
-        var bbcenter = sceneBoundingBox.center();
-        var boxlen = bbspere.radius;
-
-
-        {
-            console.log(bb, bbspere, bbcenter, boxlen);
-            bbcenter.set(0, 120, 0);
-            //bbcenter = bb.center();
-            camera.lookAt(bbcenter);
-            controls.target.copy(bbcenter);
-            camera.position.set(-278, 113, 224);
-        }
-
-        scene.add(mesh1);
-
-        //console.log(  geometry );
-        if (geometry.animations)
-        //mixer.clipAction( geometry.animations[0], mesh1 )
-        //      .setDuration( 10 )          // one second
-        //      .startAt( 0/*- Math.random()*/ )    // random phase (already running)
-        //      .play();                    // let's go
-            mixer.clipAction(geometry.animations[0])
-            .setDuration(5)
-            .startAt(0 /*- Math.random()*/ ) // random phase (already running)
-            .play(); // let's go
-    }
-
-
-    renderer = new THREE.WebGLRenderer({
-        antialias: true,
-        alpha: true
-    });
-    renderer.setClearColor(0x3a6ea5, 0); //lrt
-    renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(container.offsetWidth, container.offsetHeight);
-    container.appendChild(renderer.domElement);
-
-}
-
-function onWindowResize() {
-
-    windowHalfX = container.offsetWidth / 2;
-    windowHalfY = container.offsetHeight / 2;
-
-    console.log('resize :', container.offsetWidth, container.offsetHeight);
-
-    camera.aspect = windowHalfX / windowHalfY;
-    camera.updateProjectionMatrix();
-
-    renderer.setSize(container.offsetWidth, container.offsetHeight);
-
-    controls.handleResize();
-
-    //console.log(window.innerWidth, window.innerHeight);
-
-}
-scene3dArray['1'] = onWindowResize;
-
-function onDocumentMouseMove(event) {
-
-    mouseX = (event.clientX - windowHalfX) / 2;
-    mouseY = (event.clientY - windowHalfY) / 2;
-}
-
-function onDocumentTouchMove(event) {
-    mouseX = (event.clientX - windowHalfX) / 2;
-    mouseY = (event.clientY - windowHalfY) / 2;
-
-}
-
-function animate1() {
-    requestAnimationFrame(animate1);
-
-
-    var vec3len = camera.position.distanceTo(bbspere.center);
-    var lenmin = Math.max(0.1, vec3len - bbspere.radius);
-    var lenMax = vec3len + bbspere.radius;
-    //camera.near = lenmin;
-    //camera.far = lenMax;
-
-    //console.log(camera.near, camera.far, camera.position, bbspere.center);
-    controls.update();
-
-    var delta = clock.getDelta();
-    if (mixer)
-        mixer.update(delta);
-
-    render();
-}
-
-function render() {
-
-    renderer.render(scene, camera);
-
-}
 </script>

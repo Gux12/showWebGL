@@ -67,10 +67,25 @@
 <script src="/templates/js/vendor/pym.js"></script>
 <script src="/templates/js/main.js"></script>
 <script>
-var pymChild = new pym.Child({
+$(document).ready(function() {
+    var pymChild = new pym.Child({
         id: "iframe-customer-desire"
     });
-$(document).ready(function() {
-    
+    var imgnum = $("img").length;
+    var count1 = 0;
+    $("img").load(function() {
+        count1 = count1 + 1;
+        if (count1 == imgnum) {
+            pymChild.sendHeight();
+        }
+    });
+    var canvasnum = $("canvas").length;
+    var count2 = 0;
+    $("canvas").load(function() {
+        count2 = count2 + 1;
+        if (count2 == canvasnum) {
+            pymChild.sendHeight();
+        }
+    });
 });
 </script>

@@ -121,7 +121,7 @@
 <script src="/templates/js/vendor/Chart.js"></script>
 <script src="/templates/js/main.js"></script>
 <script src="/templates/js/vendor/pym.js"></script>
-<script type="text/javascript" charset="utf-8" async defer>
+<script type="text/javascript">
 //评价
 var linedata1 = {
     labels: ["供应商1", "供应商2", "供应商3", "供应商4", "供应商5"],
@@ -280,10 +280,25 @@ for (var i = 1; i <= 4; i++) {
     var ctx = $("#myBarChart2" + i)[0].getContext("2d");
     var myNewChart = new Chart(ctx).Bar(eval('bardata2' + i));
 }
-
-    var pymChild = new pym.Child({id: "iframe-individual-smart-supply-chain"});
-
-
+var pymChild = new pym.Child({
+    id: "iframe-individual-smart-supply-chain"
+});
+var imgnum = $("img").length;
+var count1 = 0;
+$("img").load(function() {
+    count1 = count1 + 1;
+    if (count1 == imgnum) {
+        pymChild.sendHeight();
+    }
+});
+var canvasnum = $("canvas").length;
+var count2 = 0;
+$("canvas").load(function() {
+    count2 = count2 + 1;
+    if (count2 == canvasnum) {
+        pymChild.sendHeight();
+    }
+});
 </script>
 
 </html>

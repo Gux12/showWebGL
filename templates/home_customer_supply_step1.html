@@ -76,10 +76,25 @@ $(document).ready(function() {
     var pymChild = new pym.Child({
         id: "iframe-customer-supply"
     });
-    
     $('#mytab a[href="#cloth"]').tab('show');
     $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
         pymChild.sendHeight();
     })
+    var imgnum = $("img").length;
+    var count1 = 0;
+    $("img").load(function() {
+        count1 = count1 + 1;
+        if (count1 == imgnum) {
+            pymChild.sendHeight();
+        }
+    });
+    var canvasnum = $("canvas").length;
+    var count2 = 0;
+    $("canvas").load(function() {
+        count2 = count2 + 1;
+        if (count2 == canvasnum) {
+            pymChild.sendHeight();
+        }
+    });
 });
 </script>

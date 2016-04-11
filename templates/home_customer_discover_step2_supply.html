@@ -54,10 +54,18 @@ $(document).ready(function() {
         id: "iframe-customer-discover"
     });
     var imgnum = $("img").length;
-    var count = 0;
+    var count1 = 0;
     $("img").load(function() {
-        count = count + 1;
-        if (count == imgnum) {
+        count1 = count1 + 1;
+        if (count1 == imgnum) {
+            pymChild.sendHeight();
+        }
+    });
+    var canvasnum = $("canvas").length;
+    var count2 = 0;
+    $("canvas").load(function() {
+        count2 = count2 + 1;
+        if (count2 == canvasnum) {
             pymChild.sendHeight();
         }
     });

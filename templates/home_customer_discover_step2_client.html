@@ -21,7 +21,7 @@
 </head>
 
 <body>
-<h5 style="text-align: center;">我的客户</h5>
+    <h5 style="text-align: center;">我的客户</h5>
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <table class="table">
@@ -30,10 +30,12 @@
                         <td rowspan="2"><img src="/templates/img/customer_discover/u1.png" style="height: 180px"></td>
                         <td>徐扬</td>
                         <td rowspan="2" style="text-align: center;vertical-align: middle;">
-                            <p><img src="/templates/img/customer_discover/u14.png" style="height: 100px"></p><p>服装设计师</p><a href="/templates/home_customer_map.html">我</a>(1/61)</td>
+                            <p><img src="/templates/img/customer_discover/u14.png" style="height: 100px"></p>
+                            <p>服装设计师</p><a href="/templates/home_customer_map.html">我</a>(1/61)</td>
                     </tr>
                     <tr>
-                        <td><p>成交了1套<a href="/templates/home_customer_map.html">北京服装制造厂</a>定制西服，动态成交价¥858</p><small>10分钟前</small></td>
+                        <td>
+                            <p>成交了1套<a href="/templates/home_customer_map.html">北京服装制造厂</a>定制西服，动态成交价¥858</p><small>10分钟前</small></td>
                     </tr>
                 </tbody>
             </table>
@@ -54,10 +56,18 @@ $(document).ready(function() {
         id: "iframe-customer-discover"
     });
     var imgnum = $("img").length;
-    var count = 0;
+    var count1 = 0;
     $("img").load(function() {
-        count = count + 1;
-        if (count == imgnum) {
+        count1 = count1 + 1;
+        if (count1 == imgnum) {
+            pymChild.sendHeight();
+        }
+    });
+    var canvasnum = $("canvas").length;
+    var count2 = 0;
+    $("canvas").load(function() {
+        count2 = count2 + 1;
+        if (count2 == canvasnum) {
             pymChild.sendHeight();
         }
     });
