@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ch-ZH">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>新电商</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="/templates/apple-touch-icon.png">
+    <link rel="shortcut icon" href="/templates/favicon.ico">
+    <link rel="bookmark" href="/templates/favicon.ico">
+    <link rel="stylesheet" href="/templates/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/templates/css/flat-ui.min.css">
+    <link rel="stylesheet" href="/templates/css/main.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div id="map" style="width:100%;height:500px"></div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+function initialize() {
+    var map = new BMap.Map('map');
+    map.centerAndZoom(new BMap.Point(116.4,39.9), 12);
+    map.enableScrollWheelZoom(true);
+    var local =  new BMap.LocalSearch(map,{
+        renderOptions:{map: map}
+    });
+    local.search("北京现代汽车有限公司");
+}
+
+function loadScript() {
+    var script = document.createElement("script");
+    script.src = "http://api.map.baidu.com/api?v=2.0&ak=XRC0hIYvB73wvsTGOH4ETyCx&callback=initialize"; //此 为 v2.0版本的引用方式
+    // script.src = "http://api.map.baidu.com/api?v=1.4"; // 此为 v2.0版本及以前版本的引用方式
+    document.body.appendChild(script);
+}
+window.onload = loadScript;
+</script>
+
+</html>
