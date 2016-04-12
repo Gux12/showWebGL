@@ -1,16 +1,6 @@
 var scene3dArray = [];
 $(document).ready(function() {
     var pattern = new RegExp("\\\"(.| )+?\\\"", "igm");
-    $('#my-options').css('visibility', 'visible');
-    var imgnum = $("img").length;
-    var count1 = 0;
-    $("img").load(function() {
-        count1 = count1 + 1;
-        if (count1 == imgnum) {
-            $('#my-options').css('top', $('#psycho').height() - $('#my-options').height());
-            $('#my-options').css('visibility', 'visible');
-        }
-    });
 
     var imgimac = $('#imac');
     src = imgimac.css('background-image');

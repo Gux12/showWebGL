@@ -173,15 +173,28 @@ $(modal[3]).on('shown.bs.modal', function(e) {
     pymParent4.sendWidth();
 })
 $(modal[0]).on('hidden.bs.modal', function(e) {
-    $(this).find('iframe')[0].contentWindow.document.clear(); 
+    $(this).find('iframe')[0].contentWindow.document.clear();
 })
 $(modal[1]).on('hidden.bs.modal', function(e) {
-    $(this).find('iframe')[0].contentWindow.document.clear(); 
+    $(this).find('iframe')[0].contentWindow.document.clear();
 })
 $(modal[2]).on('hidden.bs.modal', function(e) {
-    $(this).find('iframe')[0].contentWindow.document.clear(); 
+    $(this).find('iframe')[0].contentWindow.document.clear();
 })
 $(modal[3]).on('hidden.bs.modal', function(e) {
-    $(this).find('iframe')[0].contentWindow.document.clear(); 
+    $(this).find('iframe')[0].contentWindow.document.clear();
 })
+
+$(document).ready(function() {
+    var imgnum = $("img").length;
+    var count1 = 0;
+    $("img").each(function() {
+        if (this.complete) count1 = count1 + 1;
+        if (count1 == imgnum) {
+            $('#my-options').css('top', $('#psycho').height() - $('#my-options').height());
+            $('#my-options').css('visibility', 'visible');
+        }
+
+    });
+});
 </script>

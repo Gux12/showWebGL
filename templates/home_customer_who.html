@@ -60,6 +60,7 @@
         </div>
         <!-- <p style="text-align: center;"><span><img src="/templates/img/customer_who/me_body.gif" alt=""></span></p> -->
         <div id="web3d_cloth" style="height:600px;width: 1000px;margin: auto">
+        <iframe src="/cloth3" frameborder="0" id="web3d_cloth" height="100%"></iframe>
         </div>
 </body>
 <script src="/templates/js/vendor/jquery-1.11.2.min.js"></script>
@@ -71,11 +72,12 @@ $(document).ready(function() {
     });
     var imgnum = $("img").length;
     var count1 = 0;
-    $("img").load(function() {
-        count1 = count1 + 1;
+    $("img").each(function() {
+        if (this.complete) count1 = count1 + 1;
         if (count1 == imgnum) {
             pymChild.sendHeight();
         }
+
     });
     var canvasnum = $("canvas").length;
     var count2 = 0;

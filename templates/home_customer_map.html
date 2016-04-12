@@ -22,6 +22,8 @@
         </div>
     </div>
 </body>
+    <script src="/templates/js/vendor/jquery-1.11.2.min.js"></script>
+    <script src="/templates/js/vendor/pym.js"></script>
 <script type="text/javascript">
 function initialize() {
     var map = new BMap.Map('map');
@@ -42,22 +44,11 @@ function loadScript() {
     document.body.appendChild(script);
 }
 window.onload = loadScript;
-var imgnum = $("img").length;
-var count1 = 0;
-$("img").load(function() {
-    count1 = count1 + 1;
-    if (count1 == imgnum) {
-        pymChild.sendHeight();
-    }
-});
-var canvasnum = $("canvas").length;
-var count2 = 0;
-$("canvas").load(function() {
-    count2 = count2 + 1;
-    if (count2 == canvasnum) {
-        pymChild.sendHeight();
-    }
-});
+
+var pymChild1 = new pym.Child({id: "iframe-customer-who"});
+var pymChild2 = new pym.Child({id: "iframe-customer-desire"});
+var pymChild3 = new pym.Child({id: "iframe-customer-discover"});
+var pymChild4 = new pym.Child({id: "iframe-customer-supply"});
 </script>
 
 </html>
