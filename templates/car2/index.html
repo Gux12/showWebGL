@@ -25,7 +25,7 @@
 	<script src="/templates/js/web3D/js/pageSwitch.min.js"  type="text/javascript"></script>
 </head>
 
-<body style="position:absolute;  background-color:#3a3a3a; background-image:url('/templates/car3/resources/汽车展示合_图层0.png');background-size:100% 100%;background-repeat:no-repeat; background-attachment:fixed; margin-top: 0px;margin-bottom: 0px;margin-left: 0px;margin-right: 0px;-webkit-touch-callout:none;-webkit-user-select:none;">
+<body style="position:absolute;  background-color:rgba(255,255,255,0);background-size:100% 100%;background-repeat:no-repeat; background-attachment:fixed; margin-top: 0px;margin-bottom: 0px;margin-left: 0px;margin-right: 0px;-webkit-touch-callout:none;-webkit-user-select:none;">
 </body>
 </html>
 
@@ -89,132 +89,132 @@
  _124324387819802023771476550153307121760.showSkybox(false);
  
  var modelIndex = 0;
-(function(){ /* imagediv:  汽车展示合_红色  */ 
-    var pageElement213 = empGetElementByID('328025549-555962254-2129857797-1769827767', 'div', null);  
-    var itemElement = empGetElementByID('1069485067-250438055-1598434611-914172707', 'div', pageElement213); 
-    pageElement213.appendChild(itemElement); 
-    itemElement.style.cssText = "pointer-events:auto; background-image:url('/templates/car3/resources/汽车展示合_红色.png');background-repeat:no-repeat;background-position:center center;position:absolute;left:227px;top:694px;width:142px;height:50px;opacity:1;transform-origin:50% 50%;-webkit-transform-origin:50% 50%;-moz-transform-origin:50% 50%;-o-transform-origin:50% 50%;-ms-transform-origin:50% 50%;transform:translate(0px,0px) rotate(0deg) skew(0deg,0deg) scale(1,1);  z-index:10;";  
-    jQuery('#1069485067-250438055-1598434611-914172707').bind('tapone',  function(event){  /*empShowElementByID('1421555384-1552117900-707152488-937763923', 'hidden');  empShowElementByID('1691582227-1485258816-650407005-2039880589', 'hidden');  empShowElementByID('513083203-513561875-706164739-1153835674', 'visible');  var chemat = _124324387819802023771476550153307121760.getMaterialByObjName('car1_Mesh12'); if(chemat) { chemat.color.setRGB(1.0, 0.05, 0 ); }*/
+// (function(){ /* imagediv:  汽车展示合_红色  */ 
+//     var pageElement213 = empGetElementByID('328025549-555962254-2129857797-1769827767', 'div', null);  
+//     var itemElement = empGetElementByID('1069485067-250438055-1598434611-914172707', 'div', pageElement213); 
+//     pageElement213.appendChild(itemElement); 
+//     itemElement.style.cssText = "pointer-events:auto; background-image:url('/templates/car3/resources/汽车展示合_红色.png');background-repeat:no-repeat;background-position:center center;position:absolute;left:227px;top:694px;width:142px;height:50px;opacity:1;transform-origin:50% 50%;-webkit-transform-origin:50% 50%;-moz-transform-origin:50% 50%;-o-transform-origin:50% 50%;-ms-transform-origin:50% 50%;transform:translate(0px,0px) rotate(0deg) skew(0deg,0deg) scale(1,1);  z-index:10;";  
+//     jQuery('#1069485067-250438055-1598434611-914172707').bind('tapone',  function(event){  /*empShowElementByID('1421555384-1552117900-707152488-937763923', 'hidden');  empShowElementByID('1691582227-1485258816-650407005-2039880589', 'hidden');  empShowElementByID('513083203-513561875-706164739-1153835674', 'visible');  var chemat = _124324387819802023771476550153307121760.getMaterialByObjName('car1_Mesh12'); if(chemat) { chemat.color.setRGB(1.0, 0.05, 0 ); }*/
 	
-	++modelIndex;
-	if( modelIndex % 3 == 1 )
-	{
-		_124324387819802023771476550153307121760.showGroupByName("car1", true);
-		_124324387819802023771476550153307121760.showGroupByName("car2", false);
-		_124324387819802023771476550153307121760.showGroupByName("car3", false);
-		var center = _124324387819802023771476550153307121760.getGroupBoundingBox('car1').center();
-		_124324387819802023771476550153307121760.switchToCameraAni(center,  new THREE.Vector3(47,13,33), 2000);
-	}
-	else if( modelIndex % 3 == 2 )
-	{
-		_124324387819802023771476550153307121760.showGroupByName("car1", false);
-		_124324387819802023771476550153307121760.showGroupByName("car2", true);
-		_124324387819802023771476550153307121760.showGroupByName("car3", false);
-		var center = _124324387819802023771476550153307121760.getGroupBoundingBox('car2').center();
-		_124324387819802023771476550153307121760.switchToCameraAni(center,  new THREE.Vector3(8015,6463,9381), 2000);
-	}
-	else if( modelIndex % 3 == 0 )
-	{
-		_124324387819802023771476550153307121760.showGroupByName("car1", false);
-		_124324387819802023771476550153307121760.showGroupByName("car2", false);
-		_124324387819802023771476550153307121760.showGroupByName("car3", true);
-		var center = _124324387819802023771476550153307121760.getGroupBoundingBox('car3').center();
-		_124324387819802023771476550153307121760.switchToCameraAni(center,  new THREE.Vector3(71,26,27), 2000);
-	}
+// 	++modelIndex;
+// 	if( modelIndex % 3 == 1 )
+// 	{
+// 		_124324387819802023771476550153307121760.showGroupByName("car1", true);
+// 		_124324387819802023771476550153307121760.showGroupByName("car2", false);
+// 		_124324387819802023771476550153307121760.showGroupByName("car3", false);
+// 		var center = _124324387819802023771476550153307121760.getGroupBoundingBox('car1').center();
+// 		_124324387819802023771476550153307121760.switchToCameraAni(center,  new THREE.Vector3(47,13,33), 2000);
+// 	}
+// 	else if( modelIndex % 3 == 2 )
+// 	{
+// 		_124324387819802023771476550153307121760.showGroupByName("car1", false);
+// 		_124324387819802023771476550153307121760.showGroupByName("car2", true);
+// 		_124324387819802023771476550153307121760.showGroupByName("car3", false);
+// 		var center = _124324387819802023771476550153307121760.getGroupBoundingBox('car2').center();
+// 		_124324387819802023771476550153307121760.switchToCameraAni(center,  new THREE.Vector3(8015,6463,9381), 2000);
+// 	}
+// 	else if( modelIndex % 3 == 0 )
+// 	{
+// 		_124324387819802023771476550153307121760.showGroupByName("car1", false);
+// 		_124324387819802023771476550153307121760.showGroupByName("car2", false);
+// 		_124324387819802023771476550153307121760.showGroupByName("car3", true);
+// 		var center = _124324387819802023771476550153307121760.getGroupBoundingBox('car3').center();
+// 		_124324387819802023771476550153307121760.switchToCameraAni(center,  new THREE.Vector3(71,26,27), 2000);
+// 	}
 
-	} );
-})();
+// 	} );
+// })();
 
-(function(){ /* imagediv:  汽车展示合_红色点击  */ 
-    var pageElement213 = empGetElementByID('328025549-555962254-2129857797-1769827767', 'div', null);  
-    var itemElement = empGetElementByID('513083203-513561875-706164739-1153835674', 'div', pageElement213); 
-    pageElement213.appendChild(itemElement); 
-    itemElement.style.cssText = "pointer-events:auto;visibility:hidden; background-image:url('/templates/car3/resources/汽车展示合_红色点击.png');background-repeat:no-repeat;background-position:center center;position:absolute;left:227px;top:694px;width:142px;height:50px;opacity:1;transform-origin:50% 50%;-webkit-transform-origin:50% 50%;-moz-transform-origin:50% 50%;-o-transform-origin:50% 50%;-ms-transform-origin:50% 50%;transform:translate(0px,0px) rotate(0deg) skew(0deg,0deg) scale(1,1);  z-index:20;";  
-})();
+// (function(){ /* imagediv:  汽车展示合_红色点击  */ 
+//     var pageElement213 = empGetElementByID('328025549-555962254-2129857797-1769827767', 'div', null);  
+//     var itemElement = empGetElementByID('513083203-513561875-706164739-1153835674', 'div', pageElement213); 
+//     pageElement213.appendChild(itemElement); 
+//     itemElement.style.cssText = "pointer-events:auto;visibility:hidden; background-image:url('/templates/car3/resources/汽车展示合_红色点击.png');background-repeat:no-repeat;background-position:center center;position:absolute;left:227px;top:694px;width:142px;height:50px;opacity:1;transform-origin:50% 50%;-webkit-transform-origin:50% 50%;-moz-transform-origin:50% 50%;-o-transform-origin:50% 50%;-ms-transform-origin:50% 50%;transform:translate(0px,0px) rotate(0deg) skew(0deg,0deg) scale(1,1);  z-index:20;";  
+// })();
 
 var colorIndex = 0;
 
-(function(){ /* imagediv:  汽车展示合_黑色  */ 
-    var pageElement213 = empGetElementByID('328025549-555962254-2129857797-1769827767', 'div', null);  
-    var itemElement = empGetElementByID('1169492942-1001796626-1186078697-343038974', 'div', pageElement213); 
-    pageElement213.appendChild(itemElement); 
-    itemElement.style.cssText = "pointer-events:auto; background-image:url('/templates/car3/resources/汽车展示合_黑色.png');background-repeat:no-repeat;background-position:center center;position:absolute;left:440px;top:694px;width:143px;height:50px;opacity:1;transform-origin:50% 50%;-webkit-transform-origin:50% 50%;-moz-transform-origin:50% 50%;-o-transform-origin:50% 50%;-ms-transform-origin:50% 50%;transform:translate(0px,0px) rotate(0deg) skew(0deg,0deg) scale(1,1);  z-index:30;";  
-    jQuery('#1169492942-1001796626-1186078697-343038974').bind('tapone',  function(event){  /*empShowElementByID('1421555384-1552117900-707152488-937763923', 'hidden');  empShowElementByID('1691582227-1485258816-650407005-2039880589', 'visible');  empShowElementByID('513083203-513561875-706164739-1153835674', 'hidden'); 
-	var chemat = _124324387819802023771476550153307121760.getMaterialByObjName('car1_Mesh12'); if(chemat) { chemat.color.setRGB(0.1, 0.1, 0.1 ); } */ 
-	if( modelIndex % 3 == 1 )
-	{
-		var chemat = _124324387819802023771476550153307121760.getMaterialByObjName('car1_Mesh12'); 
-		if(chemat) { 
-			if( colorIndex %3 == 0)
-				chemat.color.setRGB(1.0, 0.05, 0 ); 
-			else if( colorIndex %3 == 1 )
-				chemat.color.setRGB(1.0, 1, 1 ); 
-			else 
-				chemat.color.setRGB(0.1, 0.1, 0.1 ); 
+// (function(){ /* imagediv:  汽车展示合_黑色  */ 
+//     var pageElement213 = empGetElementByID('328025549-555962254-2129857797-1769827767', 'div', null);  
+//     var itemElement = empGetElementByID('1169492942-1001796626-1186078697-343038974', 'div', pageElement213); 
+//     pageElement213.appendChild(itemElement); 
+//     itemElement.style.cssText = "pointer-events:auto; background-image:url('/templates/car3/resources/汽车展示合_黑色.png');background-repeat:no-repeat;background-position:center center;position:absolute;left:440px;top:694px;width:143px;height:50px;opacity:1;transform-origin:50% 50%;-webkit-transform-origin:50% 50%;-moz-transform-origin:50% 50%;-o-transform-origin:50% 50%;-ms-transform-origin:50% 50%;transform:translate(0px,0px) rotate(0deg) skew(0deg,0deg) scale(1,1);  z-index:30;";  
+//     jQuery('#1169492942-1001796626-1186078697-343038974').bind('tapone',  function(event){  /*empShowElementByID('1421555384-1552117900-707152488-937763923', 'hidden');  empShowElementByID('1691582227-1485258816-650407005-2039880589', 'visible');  empShowElementByID('513083203-513561875-706164739-1153835674', 'hidden'); 
+// 	var chemat = _124324387819802023771476550153307121760.getMaterialByObjName('car1_Mesh12'); if(chemat) { chemat.color.setRGB(0.1, 0.1, 0.1 ); } */ 
+// 	if( modelIndex % 3 == 1 )
+// 	{
+// 		var chemat = _124324387819802023771476550153307121760.getMaterialByObjName('car1_Mesh12'); 
+// 		if(chemat) { 
+// 			if( colorIndex %3 == 0)
+// 				chemat.color.setRGB(1.0, 0.05, 0 ); 
+// 			else if( colorIndex %3 == 1 )
+// 				chemat.color.setRGB(1.0, 1, 1 ); 
+// 			else 
+// 				chemat.color.setRGB(0.1, 0.1, 0.1 ); 
 				
-			++colorIndex;
-		}
-	}
-	else if( modelIndex % 3 == 2 )
-	{
-		var chemat = _124324387819802023771476550153307121760.getMaterialByObjName('car2_Mesh07'); 
-		var textureLoader = new THREE.TextureLoader();
-		var texture;
-		if( colorIndex %3 == 0)
-			texture = textureLoader.load( 'tsinghua2_car2/a0700.png' );
-		else if( colorIndex %3 == 1 )
-			texture = textureLoader.load( 'tsinghua2_car2/a0710.png' );
-		else 
-			texture = textureLoader.load( 'tsinghua2_car2/a0720.png' );
+// 			++colorIndex;
+// 		}
+// 	}
+// 	else if( modelIndex % 3 == 2 )
+// 	{
+// 		var chemat = _124324387819802023771476550153307121760.getMaterialByObjName('car2_Mesh07'); 
+// 		var textureLoader = new THREE.TextureLoader();
+// 		var texture;
+// 		if( colorIndex %3 == 0)
+// 			texture = textureLoader.load( 'tsinghua2_car2/a0700.png' );
+// 		else if( colorIndex %3 == 1 )
+// 			texture = textureLoader.load( 'tsinghua2_car2/a0710.png' );
+// 		else 
+// 			texture = textureLoader.load( 'tsinghua2_car2/a0720.png' );
 				
-		if( texture )
-			chemat.map = texture;
-		++colorIndex;
+// 		if( texture )
+// 			chemat.map = texture;
+// 		++colorIndex;
 		
-	}
-	else if( modelIndex % 3 == 0 )
-	{
-		var chemat = _124324387819802023771476550153307121760.getMaterialByObjName('car3_Mesh05'); 
-		console.log( chemat );
-		if(chemat) { 
-			if( colorIndex %3 == 0)
-				chemat.color.setRGB(1.0, 0.05, 0 ); 
-			else if( colorIndex %3 == 1 )
-				chemat.color.setRGB(1.0, 1, 1 ); 
-			else 
-				chemat.color.setRGB(0.1, 0.1, 0.1 ); 
+// 	}
+// 	else if( modelIndex % 3 == 0 )
+// 	{
+// 		var chemat = _124324387819802023771476550153307121760.getMaterialByObjName('car3_Mesh05'); 
+// 		console.log( chemat );
+// 		if(chemat) { 
+// 			if( colorIndex %3 == 0)
+// 				chemat.color.setRGB(1.0, 0.05, 0 ); 
+// 			else if( colorIndex %3 == 1 )
+// 				chemat.color.setRGB(1.0, 1, 1 ); 
+// 			else 
+// 				chemat.color.setRGB(0.1, 0.1, 0.1 ); 
 				
-			++colorIndex;
-		}
-	}
+// 			++colorIndex;
+// 		}
+// 	}
 	
 	
-	} );
-})();
+// 	} );
+// })();
 
-(function(){ /* imagediv:  汽车展示合_黑色点击  */ 
-    var pageElement213 = empGetElementByID('328025549-555962254-2129857797-1769827767', 'div', null);  
-    var itemElement = empGetElementByID('1691582227-1485258816-650407005-2039880589', 'div', pageElement213); 
-    pageElement213.appendChild(itemElement); 
-    itemElement.style.cssText = "pointer-events:auto;visibility:hidden; background-image:url('/templates/car3/resources/汽车展示合_黑色点击.png');background-repeat:no-repeat;background-position:center center;position:absolute;left:440px;top:694px;width:143px;height:50px;opacity:1;transform-origin:50% 50%;-webkit-transform-origin:50% 50%;-moz-transform-origin:50% 50%;-o-transform-origin:50% 50%;-ms-transform-origin:50% 50%;transform:translate(0px,0px) rotate(0deg) skew(0deg,0deg) scale(1,1);  z-index:40;";  
-})();
+// (function(){ /* imagediv:  汽车展示合_黑色点击  */ 
+//     var pageElement213 = empGetElementByID('328025549-555962254-2129857797-1769827767', 'div', null);  
+//     var itemElement = empGetElementByID('1691582227-1485258816-650407005-2039880589', 'div', pageElement213); 
+//     pageElement213.appendChild(itemElement); 
+//     itemElement.style.cssText = "pointer-events:auto;visibility:hidden; background-image:url('/templates/car3/resources/汽车展示合_黑色点击.png');background-repeat:no-repeat;background-position:center center;position:absolute;left:440px;top:694px;width:143px;height:50px;opacity:1;transform-origin:50% 50%;-webkit-transform-origin:50% 50%;-moz-transform-origin:50% 50%;-o-transform-origin:50% 50%;-ms-transform-origin:50% 50%;transform:translate(0px,0px) rotate(0deg) skew(0deg,0deg) scale(1,1);  z-index:40;";  
+// })();
 
-(function(){ /* imagediv:  汽车展示合_白色  */ 
-    var pageElement213 = empGetElementByID('328025549-555962254-2129857797-1769827767', 'div', null);  
-    var itemElement = empGetElementByID('1840730172-1510945565-1682865117-1396528295', 'div', pageElement213); 
-    pageElement213.appendChild(itemElement); 
-    itemElement.style.cssText = "pointer-events:auto; background-image:url('/templates/car3/resources/汽车展示合_白色.png');background-repeat:no-repeat;background-position:center center;position:absolute;left:655px;top:694px;width:142px;height:50px;opacity:1;transform-origin:50% 50%;-webkit-transform-origin:50% 50%;-moz-transform-origin:50% 50%;-o-transform-origin:50% 50%;-ms-transform-origin:50% 50%;transform:translate(0px,0px) rotate(0deg) skew(0deg,0deg) scale(1,1);  z-index:50;";  
-    jQuery('#1840730172-1510945565-1682865117-1396528295').bind('tapone',  function(event){  empShowElementByID('1421555384-1552117900-707152488-937763923', 'visible');  empShowElementByID('1691582227-1485258816-650407005-2039880589', 'hidden');  empShowElementByID('513083203-513561875-706164739-1153835674', 'hidden');  var chemat = _124324387819802023771476550153307121760.getMaterialByObjName('car1_Mesh12'); if(chemat) { chemat.color.setRGB(1.0, 1, 1 ); } 
-	_124324387819802023771476550153307121760.showGroupByName("car2", true);
-	} );
-})();
+// (function(){ /* imagediv:  汽车展示合_白色  */ 
+//     var pageElement213 = empGetElementByID('328025549-555962254-2129857797-1769827767', 'div', null);  
+//     var itemElement = empGetElementByID('1840730172-1510945565-1682865117-1396528295', 'div', pageElement213); 
+//     pageElement213.appendChild(itemElement); 
+//     itemElement.style.cssText = "pointer-events:auto; background-image:url('/templates/car3/resources/汽车展示合_白色.png');background-repeat:no-repeat;background-position:center center;position:absolute;left:655px;top:694px;width:142px;height:50px;opacity:1;transform-origin:50% 50%;-webkit-transform-origin:50% 50%;-moz-transform-origin:50% 50%;-o-transform-origin:50% 50%;-ms-transform-origin:50% 50%;transform:translate(0px,0px) rotate(0deg) skew(0deg,0deg) scale(1,1);  z-index:50;";  
+//     jQuery('#1840730172-1510945565-1682865117-1396528295').bind('tapone',  function(event){  empShowElementByID('1421555384-1552117900-707152488-937763923', 'visible');  empShowElementByID('1691582227-1485258816-650407005-2039880589', 'hidden');  empShowElementByID('513083203-513561875-706164739-1153835674', 'hidden');  var chemat = _124324387819802023771476550153307121760.getMaterialByObjName('car1_Mesh12'); if(chemat) { chemat.color.setRGB(1.0, 1, 1 ); } 
+// 	_124324387819802023771476550153307121760.showGroupByName("car2", true);
+// 	} );
+// })();
 
-(function(){ /* imagediv:  汽车展示合_白色点击  */ 
-    var pageElement213 = empGetElementByID('328025549-555962254-2129857797-1769827767', 'div', null);  
-    var itemElement = empGetElementByID('1421555384-1552117900-707152488-937763923', 'div', pageElement213); 
-    pageElement213.appendChild(itemElement); 
-    itemElement.style.cssText = "pointer-events:auto;visibility:hidden; background-image:url('/templates/car3/resources/汽车展示合_白色点击.png');background-repeat:no-repeat;background-position:center center;position:absolute;left:655px;top:694px;width:142px;height:50px;opacity:1;transform-origin:50% 50%;-webkit-transform-origin:50% 50%;-moz-transform-origin:50% 50%;-o-transform-origin:50% 50%;-ms-transform-origin:50% 50%;transform:translate(0px,0px) rotate(0deg) skew(0deg,0deg) scale(1,1);  z-index:60;";  
-})();
+// (function(){ /* imagediv:  汽车展示合_白色点击  */ 
+//     var pageElement213 = empGetElementByID('328025549-555962254-2129857797-1769827767', 'div', null);  
+//     var itemElement = empGetElementByID('1421555384-1552117900-707152488-937763923', 'div', pageElement213); 
+//     pageElement213.appendChild(itemElement); 
+//     itemElement.style.cssText = "pointer-events:auto;visibility:hidden; background-image:url('/templates/car3/resources/汽车展示合_白色点击.png');background-repeat:no-repeat;background-position:center center;position:absolute;left:655px;top:694px;width:142px;height:50px;opacity:1;transform-origin:50% 50%;-webkit-transform-origin:50% 50%;-moz-transform-origin:50% 50%;-o-transform-origin:50% 50%;-ms-transform-origin:50% 50%;transform:translate(0px,0px) rotate(0deg) skew(0deg,0deg) scale(1,1);  z-index:60;";  
+// })();
 
 
 }/*addChildrenItems end*/

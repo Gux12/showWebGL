@@ -42,8 +42,8 @@ $(document).ready(function() {
     });
     var imgnum = $("img").length;
     var count1 = 0;
-    $("img").each(function() {
-        if (this.complete) count1 = count1 + 1;
+    $("img").load(function() {
+        count1 = count1 + 1;
         if (count1 == imgnum) {
             pymChild.sendHeight();
         }
