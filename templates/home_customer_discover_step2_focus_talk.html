@@ -21,21 +21,34 @@
 </head>
 
 <body>
-<h5 style="text-align: center;">我的供应商</h5>
+<h5 style="text-align: center;">我的关注</h5>
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <table class="table">
                 <tbody>
                     <tr>
                         <td rowspan="2">
-                            <a href="/templates/home_customer_discover_step2_supply_talk.html"><img src="/templates/img/customer_discover/u10.gif" style="height: 100px"></a>
+                            <a href="/templates/"></a>
+                        <img src="/templates/img/customer_discover/u22.png" style="height: 100px">
                         </td>
-                        <td>北京现代汽车有限公司</td>
+                        <td>Microsoft</td>
                         <td rowspan="2" style="text-align: center;vertical-align: middle;">
-                            <p><img src="/templates/img/customer_discover/u12.png" style="height: 100px"></p><p>汽车生产商</p><a href="/templates/home_customer_map.html">北京现代汽车有限公司</a>(1/30)</td>
+                            <p><img src="/templates/img/customer_discover/u24.png" style="height: 100px"></p></td>
                     </tr>
                     <tr>
-                        <td><p>成交了1辆北京现代汽车有限公司的途胜SUV，动态成交价￥210,000</p><small>15分钟前</small></td>
+                        <td><p>发布了Surface Pro 4</p><small>五个月前 <a href="">相关新闻</a></small></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">
+                            <a href="/templates/"></a>
+                        <img src="/templates/img/customer_discover/u22.png" style="height: 100px">
+                        </td>
+                        <td>Microsoft</td>
+                            <td rowspan="2" style="text-align: center;vertical-align: middle;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><p>热点新闻：两会科技相关政策解读</p><small>两个月前 <a href="">相关新闻</a></small></td>
                     </tr>
                 </tbody>
             </table>
@@ -56,18 +69,10 @@ $(document).ready(function() {
         id: "iframe-customer-discover"
     });
     var imgnum = $("img").length;
-    var count1 = 0;
+    var count = 0;
     $("img").load(function() {
-        count1 = count1 + 1;
-        if (count1 == imgnum) {
-            pymChild.sendHeight();
-        }
-    });
-    var canvasnum = $("canvas").length;
-    var count2 = 0;
-    $("canvas").load(function() {
-        count2 = count2 + 1;
-        if (count2 == canvasnum) {
+        count = count + 1;
+        if (count == imgnum) {
             pymChild.sendHeight();
         }
     });
