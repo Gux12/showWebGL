@@ -18,9 +18,7 @@ from django.contrib import admin
 from home import views as home_views
 from car1 import views as car1_views
 from car2 import views as car2_views
-from car3_1 import views as car3_1_views
-from car3_2 import views as car3_2_views
-from car3_3 import views as car3_3_views
+from car3 import views as car3_views
 from cloth1 import views as cloth1_views
 from cloth2 import views as cloth2_views
 from cloth3 import views as cloth3_views
@@ -35,9 +33,7 @@ urlpatterns = [
     url(r'^home/smart_chain', home_views.get_smart_chain),
     url(r'^car1/', car1_views.index),
     url(r'^car2/', car2_views.index),
-    url(r'^car3_1/', car3_1_views.index),
-    url(r'^car3_2/', car3_2_views.index),
-    url(r'^car3_3/', car3_3_views.index),
+    url(r'^car3/', car3_views.index),
     url(r'^cloth1/', cloth1_views.index),
     url(r'^cloth2/', cloth2_views.index),
     url(r'^cloth3/', cloth3_views.index),
