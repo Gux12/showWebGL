@@ -66,6 +66,19 @@ $(document).ready(function() {
         this.href = "home_customer_supply_step2_" + cloth + ".html";
     });
 
-
-    // $('*').off("scroll");
+    function windowHrefTo( name ){
+        window.location.href=name;
+    }
+    $('.btn-smart-chain').each(function(index, el) {
+        var id=this.dataset.target;
+        $(id).on('shown.bs.collapse', function(event) {
+            windowHrefTo(id);
+        });
+    });
+    $('.btn-chain').each(function(index, el) {
+        var id=this.dataset.target;
+        $(id).on('shown.bs.collapse', function(event) {
+            windowHrefTo(id);
+        });
+    });
 });
