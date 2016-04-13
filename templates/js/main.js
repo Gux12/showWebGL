@@ -1,4 +1,3 @@
-var scene3dArray = [];
 $(document).ready(function() {
     var pattern = new RegExp("\\\"(.| )+?\\\"", "igm");
 
@@ -27,9 +26,10 @@ $(document).ready(function() {
 
 
     // 这部分是用来在打开和关闭模态框时使用不同的背景图片
-    var modal = new Array('#myModal1', '#myModal2', '#myModal3', '#myModal4')
+    var modal = new Array('#myModal1', '#myModal2', '#myModal3', '#myModal4');
+    var modalDOM = {'myModal1': $('#myModal1'),'myModal2':$('#myModal2'),'myModal3':$('#myModal3'),'myModal4':$('#myModal4')};
     for (x in modal) {
-        $(modal[x]).on('hide.bs.modal', function(e) {
+        $(modal[x]).on('hide.bs.modal', function(e) {         
             $('#psycho')[0].src = "/templates/img/image1_u1.gif";
             $('#psycho').load(function(){
                 $('#my-options').css('top', $('#psycho')[0].clientHeight - $('#my-options').height());
@@ -52,11 +52,6 @@ $(document).ready(function() {
             this.textContent = "取消订单";
         } else {
             this.textContent = "确认订单";
-        }
-    })
-    $('#microphone a').click(function() {
-        for (key3d in scene3dArray) {
-            scene3dArray[key3d]();
         }
     })
 

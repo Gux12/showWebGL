@@ -204,5 +204,8 @@ $(document).ready(function() {
         }
 
     });
+    $(window).resize(function() {
+        $('#my-options').css('top', $('#psycho').height() - $('#my-options').height());
+    });
 });
 </script>
