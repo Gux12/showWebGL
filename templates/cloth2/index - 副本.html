@@ -70,7 +70,7 @@
 				container = document.createElement( 'div' );
 				document.body.appendChild( container );
 
-				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 10, 1000000 );
+				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 1000000 );
 				camera.position.z = 100;
 
 				controls = new THREE.TrackballControls( camera );
@@ -96,12 +96,9 @@
 
 				var directionalLight = new THREE.DirectionalLight( 0xffffff, 2 );
 				directionalLight.position.set( -1, -1, -1 );
+				directionalLight.intensity  = 0.7;
 				scene.add( directionalLight );
 
-							
-				//var light = new THREE.DirectionalLight( 0xffffff, 2 );
-				//light.position.set( 1, 1, 1 );
-				//scene.add( light );
 
 				// texture
 				mixer = new THREE.AnimationMixer( scene );
@@ -140,25 +137,12 @@
 
 				//function createScene2( geometry, material, pos, scale, rot) {
 				function createScene2( geometry, material, wts) {
-					
-					//console.log( ' pos:',pos[0], 1*pos[1], 1*pos[2], rot[0], ' rot:', 1*rot[1], 1*rot[2], 1*rot[3], ' scale:',scale[0], 1*scale[1], 1*scale[2])
-					//material.side = THREE.DoubleSide;
 					mesh1 = new THREE.Mesh( geometry, material );
 					mesh1.name = geometry.name;
 					mesh1.applyMatrix( wts );
-					/*
-					if( scale !== undefined )
-						mesh1.scale.set( scale[0], scale[1], scale[2] );
 					
-					//console.log("mat",pos, mesh1.position);
-					if( pos !== undefined )
-						mesh1.position.set( pos[0], pos[1],  pos[2] );
-						
-					if( rot !== undefined )
-						mesh1.quaternion.set( rot[0], rot[1], rot[2], rot[3] );
-					*/
-					//console.log( ' pos:',mesh1.position, ' rot:', mesh1.quaternion, ' scale:',mesh1.scale);
 					geometry.computeBoundingBox();
+					geometry.computeBoundingSphere();
 					var bb = geometry.boundingBox;
 					bb.applyMatrix4( wts );
 					sceneBoundingBox.expandByPoint( bb.min );
@@ -169,10 +153,18 @@
 					var bbcenter = sceneBoundingBox.center();
 					var boxlen = bbspere.radius;
 
-					camera.lookAt(bbcenter);
+					if( mesh1.name ==  "Mesh64")
+					{
+						bbcenter = bb.center();
+						camera.lookAt(bbcenter);
+						controls.target.copy( bbcenter );
+						camera.position.set( -13, 5, -7);
+					}	
+					
 					//camera.position.x =  bbcenter.x; //geometry.boundingBox.max.x *2 - geometry.boundingBox.min.x;
 					//camera.position.y =  bbcenter.y; //geometry.boundingBox.max.y *2 - geometry.boundingBox.min.y;
 					//camera.position.z =  sceneBoundingBox.max.z *2 - sceneBoundingBox.min.z;
+						
 
 					scene.add( mesh1 );
 					
@@ -183,21 +175,70 @@
 						//		.startAt( 0/*- Math.random()*/ )	// random phase (already running)
 						//		.play();					// let's go
 						mixer.clipAction( geometry.animations[0] )
-								.setDuration( 166 )
+								.setDuration( 190 )
 								.startAt( 0/*- Math.random()*/ )	// random phase (already running)
 								.play();					// let's go
 				}
-				
-				camera.position.set( 1393, 1094, 1098);
 
 
 				renderer = new THREE.WebGLRenderer({antialias:true});
-				renderer.setClearColor( 0x0 ); //lrt
+				renderer.setClearColor( 0x3a6ea5 ); //lrt
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				container.appendChild( renderer.domElement );
 
 				window.addEventListener( 'resize', onWindowResize, false );
+				window.addEventListener( 'keydown', function ( event ) {
+
+					switch ( event.keyCode ) {
+
+						case 81: // Q
+							viewTransCtrl.setSpace( viewTransCtrl.space === "local" ? "world" : "local" );
+							break;
+
+						case 17: // Ctrl
+							viewTransCtrl.setTranslationSnap( 100 );
+							viewTransCtrl.setRotationSnap( THREE.Math.degToRad( 15 ) );
+							break;
+
+						case 87: // W
+							viewTransCtrl.setMode( "translate" );
+							break;
+
+						case 69: // E
+							viewTransCtrl.setMode( "rotate" );
+							break;
+
+						case 82: // R
+							viewTransCtrl.setMode( "scale" );
+							break;
+
+						case 187:
+						case 107: // +, =, num+
+							viewTransCtrl.setSize( viewTransCtrl.size + 0.1 );
+							break;
+
+						case 189:
+						case 109: // -, _, num-
+							viewTransCtrl.setSize( Math.max( viewTransCtrl.size - 0.1, 0.1 ) );
+							break;
+
+					}
+
+				});
+				window.addEventListener( 'keyup', function ( event ) {
+
+					switch ( event.keyCode ) {
+
+						case 17: // Ctrl
+							viewTransCtrl.setTranslationSnap( null );
+							viewTransCtrl.setRotationSnap( null );
+							break;
+
+					}
+
+				});
+				
 				stats = new Stats();
 				stats.domElement.style.position = 'absolute';
 				stats.domElement.style.top = '0px';
@@ -238,7 +279,7 @@
 
  
 				var vec3len = camera.position.distanceTo( bbspere.center);
-				var lenmin = Math.max(10, vec3len - bbspere.radius );
+				var lenmin = Math.max(1.0, vec3len - bbspere.radius );
 				var lenMax = vec3len + bbspere.radius;
 				camera.near =  lenmin ;
 				camera.far = lenMax ;
