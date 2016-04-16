@@ -14,24 +14,20 @@
     <link rel="stylesheet" href="/templates/css/flat-ui.min.css">
     <link rel="stylesheet" href="/templates/css/main.css">
     <style>
-    body {
-        width: 100%;
-    }
+        body {
+            width: 100%;
+        }
     </style>
 </head>
 
 <body>
-    <div id="supply-step1">
-        <div class="row">
-            <div class="col-sm-6 col-md-2 col-md-offset-5">
-                <div class="thumbnail">
-                    <img src="/templates/img/cloth/Home_Measurement/s3.jpg" alt="/templates/cloth/Home_Measurement.html" style="min-height:300px;height:300px;">
-                    <div class="caption">
-                        <p><center><a href="#" class="btn btn-primary" role="button">开始采集</a></center></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="col-sm-6 col-md-2 col-md-offset-5"
+         style="background-color: #2C3E50;padding: 0px;width: 240px;border-radius: 10px;overflow:hidden; margin-top: 50px;">
+        <img class="img-responsive" src="/templates/img/cloth/Home_Measurement/s3.jpg"
+             style="min-height:300px;height:300px;width: 240px;">
+        <h3 style="color: #16A085;margin-top: 15px;">
+            <center><a href="/templates/cloth/index.html" class="btn btn-primary" role="button">开始采集</a></center>
+        </h3>
     </div>
 </body>
 
@@ -43,30 +39,30 @@
 <script src="/templates/js/vendor/pym.js"></script>
 <script src="/templates/js/main.js"></script>
 <script>
-$(document).ready(function() {
-    var pymChild = new pym.Child({
-        id: "iframe-customer-supply"
-    });
-    $('#mytab a[href="#cloth"]').tab('show');
-    $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
-        pymChild.sendHeight();
-    })
-    var imgnum = $("img").length;
-    var count1 = 0;
-    $("img").each(function() {
-        if (this.complete) count1 = count1 + 1;
-        if (count1 == imgnum) {
+    $(document).ready(function () {
+        var pymChild = new pym.Child({
+            id: "iframe-customer-supply"
+        });
+        $('#mytab a[href="#cloth"]').tab('show');
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
             pymChild.sendHeight();
-        }
+        })
+        var imgnum = $("img").length;
+        var count1 = 0;
+        $("img").each(function () {
+            if (this.complete) count1 = count1 + 1;
+            if (count1 == imgnum) {
+                pymChild.sendHeight();
+            }
 
+        });
+        var canvasnum = $("canvas").length;
+        var count2 = 0;
+        $("canvas").load(function () {
+            count2 = count2 + 1;
+            if (count2 == canvasnum) {
+                pymChild.sendHeight();
+            }
+        });
     });
-    var canvasnum = $("canvas").length;
-    var count2 = 0;
-    $("canvas").load(function() {
-        count2 = count2 + 1;
-        if (count2 == canvasnum) {
-            pymChild.sendHeight();
-        }
-    });
-});
 </script>
