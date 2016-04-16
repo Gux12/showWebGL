@@ -40,6 +40,30 @@ iframe {
 	text-align: center;
 }
 
+.cloth-items {
+    margin: 15px 0 15px 0;
+    background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, .1) 0%, rgba(0, 0, 0, .0001) 100%);
+    background-image: -o-linear-gradient(left, rgba(0, 0, 0, .1) 0%, rgba(0, 0, 0, .0001) 100%);
+    background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, .1)), to(rgba(0, 0, 0, .0001)));
+    background-image: linear-gradient(to right, rgba(0, 0, 0, .1) 0%, rgba(0, 0, 0, .0001) 100%);
+    background-clip: content-box;
+    height: 250px;
+    cursor: pointer;
+}
+
+.cloth-items > p {
+    height: 80%;
+}
+.cloth-items > p > span > img {
+    padding: 15px;
+    max-width: 100%;
+    max-height: 100%;
+}
+.cloth-items > div{
+    height: 20%;
+    text-align: center;
+}
+
 .modal-xl{
     width: 1200px;
 }

@@ -24,7 +24,7 @@ from cloth2 import views as cloth2_views
 from cloth3 import views as cloth3_views
 from sheep1 import views as sheep1_views
 from sheep2 import views as sheep2_views
-
+from cloth import views as cloth_views
 
 
 urlpatterns = [
@@ -39,5 +39,5 @@ urlpatterns = [
     url(r'^cloth3/', cloth3_views.index),
     url(r'^sheep1/', sheep1_views.index),
     url(r'^sheep2/', sheep2_views.index),
-
+    url(r'^cloth/', cloth_views.index),
 ]
