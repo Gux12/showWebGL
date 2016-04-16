@@ -21,56 +21,50 @@
 </head>
 
 <body>
-<div id="supply-step1">
-    <div class="row">
-        <div class="col-sm-6 col-md-2 col-md-offset-4">
-            <div class="thumbnail">
-                <div class="caption">
-                    <div class="input-group" style="margin-top: 5px">
-                        <span class="input-group-addon" id="basic-addon1">肩宽</span>
-                        <input type="text" class="form-control" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="input-group" style="margin-top: 5px">
-                        <span class="input-group-addon" id="basic-addon1">胸围</span>
-                        <input type="text" class="form-control" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="input-group" style="margin-top: 5px">
-                        <span class="input-group-addon" id="basic-addon1">腰围</span>
-                        <input type="text" class="form-control" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="input-group" style="margin-top: 5px">
-                        <span class="input-group-addon" id="basic-addon1">臀围</span>
-                        <input type="text" class="form-control" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="input-group" style="margin-top: 5px">
-                        <span class="input-group-addon" id="basic-addon1">臂长</span>
-                        <input type="text" class="form-control" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="input-group" style="margin-top: 5px">
-                        <span class="input-group-addon" id="basic-addon1">身高</span>
-                        <input type="text" class="form-control" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="input-group" style="margin-top: 5px">
-                        <span class="input-group-addon" id="basic-addon1">腿长</span>
-                        <input type="text" class="form-control" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="input-group" style="margin-top: 5px">
-                        <span class="input-group-addon" id="basic-addon1">脚码</span>
-                        <input type="text" class="form-control" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="input-group" style="margin-top: 5px">
-                        <span class="input-group-addon" id="basic-addon1">体重</span>
-                        <input type="text" class="form-control" aria-describedby="basic-addon1">
-                    </div>
-                    <p>
-                    <center><a href="#" class="btn btn-primary" role="button">提交</a></center>
-                    </p>
+    <div id="supply-step1">
+        <div class="row" style="margin-top: 5%">
+            <div class="col-sm-6 col-md-2 col-md-offset-4">
+                <div class="input-group" style="margin-top: 5px">
+                    <span class="input-group-addon" id="basic-addon1">肩宽</span>
+                    <input type="text" class="form-control" aria-describedby="basic-addon1">
                 </div>
+                <div class="input-group" style="margin-top: 5px">
+                    <span class="input-group-addon" id="basic-addon1">胸围</span>
+                    <input type="text" class="form-control" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group" style="margin-top: 5px">
+                    <span class="input-group-addon" id="basic-addon1">腰围</span>
+                    <input type="text" class="form-control" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group" style="margin-top: 5px">
+                    <span class="input-group-addon" id="basic-addon1">臀围</span>
+                    <input type="text" class="form-control" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group" style="margin-top: 5px">
+                    <span class="input-group-addon" id="basic-addon1">臂长</span>
+                    <input type="text" class="form-control" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group" style="margin-top: 5px">
+                    <span class="input-group-addon" id="basic-addon1">身高</span>
+                    <input type="text" class="form-control" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group" style="margin-top: 5px">
+                    <span class="input-group-addon" id="basic-addon1">腿长</span>
+                    <input type="text" class="form-control" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group" style="margin-top: 5px">
+                    <span class="input-group-addon" id="basic-addon1">脚码</span>
+                    <input type="text" class="form-control" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group" style="margin-top: 5px">
+                    <span class="input-group-addon" id="basic-addon1">体重</span>
+                    <input type="text" class="form-control" aria-describedby="basic-addon1">
+                </div>
+                <center>
+                    <a href="#" class="btn btn-primary" style="margin-top: 20px;width: 30%;" role="button">提交</a>
+                </center>
             </div>
-        </div>
-
-        <div class="col-sm-6 col-md-3">
-            <div class="thumbnail">
+            <div class="col-sm-6 col-md-3">
                 <a href="/templates/cloth/Home_Data_Synchronize.html">
                     <img src="/templates/img/cloth/Home_Measurement/s4.jpg" alt="/templates/cloth/Home_Measurement.html"
                          style="min-height:500px;height:500px;">
@@ -78,7 +72,6 @@
             </div>
         </div>
     </div>
-</div>
 </body>
 
 </html>
@@ -114,6 +107,8 @@
                 pymChild.sendHeight();
             }
         });
+
+        $(".input-group").css("margin-top", "8px");
 
         $(".form-control").focusin(function () {
             $(this).closest(".input-group").addClass("focus");
