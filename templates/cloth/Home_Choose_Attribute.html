@@ -23,34 +23,35 @@
 <body>
 <div class="container-fluid" style="display: table">
     <div class="row" style="margin-top: 50px;">
-        <div class="col-sm-6" style="overflow: hidden;width: 400px;">
-            <img src="/templates/img/cloth/Home_Measurement/s4.jpg" alt="/templates/cloth/Home_Measurement.html"
-                 style="min-height:500px;height:500px;">
-        </div>
-        <div class="col-sm-6" style="width: 300px;margin-left: 20px;margin-top: 45px;">
+        <!--<div class="col-sm-6" style="overflow: hidden;width: 400px;">-->
+        <!--<img src="/templates/img/cloth/Home_Measurement/s4.jpg" alt="/templates/cloth/Home_Measurement.html"-->
+        <!--style="min-height:500px;height:500px;">-->
+        <!--</div>-->
+
+        <div class="col-sm-6" style="width: 400px;margin-left: 0px;margin-top: 10px;">
             <table class="table">
                 <tr>
                     <td style="vertical-align: middle;"><strong>胸围</strong></td>
                     <td colspan="2">
-                        <div class="slider" id="slider1" style="margin-top: 18px;"></div>
+                        <div class="slider" id="slider1" style="margin-top: 18px;margin-left: 30px; width: 75%;"></div>
                     </td>
                 </tr>
                 <tr>
                     <td style="vertical-align: middle;"><strong>腰围</strong></td>
                     <td colspan="2">
-                        <div class="slider" id="slider2" style="margin-top: 18px;"></div>
+                        <div class="slider" id="slider2" style="margin-top: 18px;margin-left: 30px; width: 75%;"></div>
                     </td>
                 </tr>
                 <tr>
                     <td style="vertical-align: middle;"><strong>肩宽</strong></td>
                     <td colspan="2">
-                        <div class="slider" id="slider3" style="margin-top: 18px;"></div>
+                        <div class="slider" id="slider3" style="margin-top: 18px;margin-left: 30px; width: 75%;"></div>
                     </td>
                 </tr>
                 <tr>
                     <td style="vertical-align: middle;"><strong>领口</strong></td>
                     <td>
-                        <label class="checkbox radio" for="checkbox0" style="margin-left: 0px;">
+                        <label class="checkbox radio" for="checkbox0" style="margin-left: 30px;">
                             <input type="checkbox" value="" id="checkbox0" data-toggle="checkbox"
                                    class="custom-checkbox">
                             <span class="icons">
@@ -61,7 +62,7 @@
                         </label>
                     </td>
                     <td>
-                        <label class="checkbox radio" for="checkbox1" style="margin-left: 0px;">
+                        <label class="checkbox radio" for="checkbox1" style="margin-left: -10px;">
                             <input type="checkbox" value="" id="checkbox1" data-toggle="checkbox"
                                    class="custom-checkbox">
                             <span class="icons">
@@ -75,7 +76,7 @@
                 <tr>
                     <td style="vertical-align: middle; width: 60px;"><strong>袖口</strong></td>
                     <td>
-                        <label class="checkbox radio" for="checkbox2" style="margin-left: 0px;">
+                        <label class="checkbox radio" for="checkbox2" style="margin-left: 30px;">
                             <input type="checkbox" value="" id="checkbox2" data-toggle="checkbox"
                                    class="custom-checkbox">
                             <span class="icons">
@@ -86,7 +87,7 @@
                         </label>
                     </td>
                     <td>
-                        <label class="checkbox radio" for="checkbox3" style="margin-left: 0px;">
+                        <label class="checkbox radio" for="checkbox3" style="margin-left: -10px;">
                             <input type="checkbox" value="" id="checkbox3" data-toggle="checkbox"
                                    class="custom-checkbox">
                             <span class="icons">
@@ -100,7 +101,7 @@
                 <tr>
                     <td style="vertical-align: middle; width: 60px;"><strong>面料</strong></td>
                     <td>
-                        <label class="checkbox radio" for="checkbox4" style="margin-left: 0px;">
+                        <label class="checkbox radio" for="checkbox4" style="margin-left: 30px;">
                             <input type="checkbox" value="" id="checkbox4" data-toggle="checkbox"
                                    class="custom-checkbox">
                             <span class="icons">
@@ -111,7 +112,7 @@
                         </label>
                     </td>
                     <td>
-                        <label class="checkbox radio" for="checkbox5" style="margin-left: 0px;">
+                        <label class="checkbox radio" for="checkbox5" style="margin-left: -10px;">
                             <input type="checkbox" value="" id="checkbox5   " data-toggle="checkbox"
                                    class="custom-checkbox">
                             <span class="icons">
@@ -123,13 +124,30 @@
                     </td>
                 </tr>
                 <tr>
+                    <td style="vertical-align: middle;"><strong>胸围</strong></td>
+                    <td colspan="2">
+                        <select class="form-control select select-inverse select-block" id="u194_input"
+                        style="margin-left: 30px;width: 75%;">
+                            <option value="不限">不限</option>
+                            <option value="0~1000">0~1000</option>
+                            <option value="1000~2000">1000~2000</option>
+                            <option value="2000~3000">2000~3000</option>
+                            <option value="3000~5000">3000~5000</option>
+                            <option value="5000~10000">5000~10000</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
                     <td></td>
                     <td></td>
                 </tr>
             </table>
             <a href="/templates/cloth/index.html" class="btn btn-primary"
-               style="margin-top: -10px;margin-left: 60px;width: 30%;"
+               style="margin-top: -10px;margin-left: 0px;width: 86%;"
                role="button">提交</a>
+        </div>
+        <div class="col-sm-6" style="overflow: hidden;width: 500px;height: 500px;">
+            <iframe src="/cloth3" frameborder="0" id="web3d_cloth" height="100%"></iframe>
         </div>
     </div>
 </div>
