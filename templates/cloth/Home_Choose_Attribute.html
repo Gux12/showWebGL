@@ -14,56 +14,129 @@
     <link rel="stylesheet" href="/templates/css/flat-ui.min.css">
     <link rel="stylesheet" href="/templates/css/main.css">
     <style>
-    body {
-        width: 100%;
-    }
+        body {
+            width: 100%;
+        }
     </style>
 </head>
 
 <body>
-    <div id="supply-step1">
-        <div class="row">
-            <div class="col-sm-6 col-md-2 col-md-offset-4">
-                <div class="thumbnail">
-                    <a href="/templates/cloth/Home_Data_Synchronize.html">
-                        <img src="/templates/img/cloth/Home_Measurement/s4.jpg" alt="/templates/cloth/Home_Measurement.html" style="min-height:500px;height:500px;">
-                    </a>
-                    <div class="caption">
-                        <!-- <h3><center>测量体验店</center></h3> -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="thumbnail">
-                    <div class="caption">
-                        
-                        <!-- <div class="row"> -->
-                            <!-- <strong>肩宽</strong> -->
-                            <!-- <div id="slider"></div> -->
-                        <!-- </div> -->
-                        <table class="table">
-                            <tbody>
-                                <tr>
-                                    <td style="vertical-align: middle; width: 60px;"><strong>胸围</strong></td>
-                                    <td><div class="slider"></div></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>腰围</strong></td>
-                                    <td><div class="slider"></div></td>
-                                </tr>
-                                <tr>
-                                    <th><strong></strong></th>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <p><center><a href="#" class="btn btn-primary" role="button">虚拟试衣</a></center></p>
-                    </div>
-                </div>
-            </div>
+<div id="supply-step1">
+    <div class="row" style="margin-top: 50px;">
+        <div class="col-sm-6 col-md-3 col-md-offset-3">
+            <img src="/templates/img/cloth/Home_Measurement/s4.jpg" alt="/templates/cloth/Home_Measurement.html"
+                 style="min-height:500px;height:500px;">
+        </div>
+        <div class="col-sm-6 col-md-2">
+            <!--<p>-->
+            <!--<strong>胸围</strong>-->
+            <!--<div class="slider"></div>-->
+            <!--</p>-->
+            <table class="table">
+                <tr>
+                    <td style="vertical-align: middle;"><strong>胸围</strong></td>
+                    <td colspan="2">
+                        <div class="slider" id="slider1" style="margin-top: 18px;"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align: middle;"><strong>腰围</strong></td>
+                    <td colspan="2">
+                        <div class="slider" id="slider2" style="margin-top: 18px;"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align: middle;"><strong>肩宽</strong></td>
+                    <td colspan="2">
+                        <div class="slider" id="slider3" style="margin-top: 18px;"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align: middle;"><strong>领口</strong></td>
+                    <td>
+                        <label class="checkbox radio" for="checkbox0" style="margin-left: 0px;">
+                            <input type="checkbox" value="" id="checkbox0" data-toggle="checkbox"
+                                   class="custom-checkbox">
+                            <span class="icons">
+                                <span class="icon-unchecked"></span>
+                                <span class="icon-checked"></span>
+                            </span>
+                            领口1
+                        </label>
+                    </td>
+                    <td>
+                        <label class="checkbox radio" for="checkbox1" style="margin-left: 0px;">
+                            <input type="checkbox" value="" id="checkbox1" data-toggle="checkbox"
+                                   class="custom-checkbox">
+                            <span class="icons">
+                                <span class="icon-unchecked"></span>
+                                <span class="icon-checked"></span>
+                            </span>
+                            领口2
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align: middle; width: 60px;"><strong>袖口</strong></td>
+                    <td>
+                        <label class="checkbox radio" for="checkbox2" style="margin-left: 0px;">
+                            <input type="checkbox" value="" id="checkbox2" data-toggle="checkbox"
+                                   class="custom-checkbox">
+                            <span class="icons">
+                                <span class="icon-unchecked"></span>
+                                <span class="icon-checked"></span>
+                            </span>
+                            袖口1
+                        </label>
+                    </td>
+                    <td>
+                        <label class="checkbox radio" for="checkbox3" style="margin-left: 0px;">
+                            <input type="checkbox" value="" id="checkbox3" data-toggle="checkbox"
+                                   class="custom-checkbox">
+                            <span class="icons">
+                                <span class="icon-unchecked"></span>
+                                <span class="icon-checked"></span>
+                            </span>
+                            袖口2
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align: middle; width: 60px;"><strong>面料</strong></td>
+                    <td>
+                        <label class="checkbox radio" for="checkbox4" style="margin-left: 0px;">
+                            <input type="checkbox" value="" id="checkbox4" data-toggle="checkbox"
+                                   class="custom-checkbox">
+                            <span class="icons">
+                                <span class="icon-unchecked"></span>
+                                <span class="icon-checked"></span>
+                            </span>
+                            面料1
+                        </label>
+                    </td>
+                    <td>
+                        <label class="checkbox radio" for="checkbox5" style="margin-left: 0px;">
+                            <input type="checkbox" value="" id="checkbox5   " data-toggle="checkbox"
+                                   class="custom-checkbox">
+                            <span class="icons">
+                                <span class="icon-unchecked"></span>
+                                <span class="icon-checked"></span>
+                            </span>
+                            面料2
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+            <a href="/templates/cloth/index.html" class="btn btn-primary"
+               style="margin-top: -10px;margin-left: 60px;width: 30%;"
+               role="button">提交</a>
         </div>
     </div>
+</div>
 </body>
 
 </html>
@@ -74,43 +147,49 @@
 <script src="/templates/js/vendor/pym.js"></script>
 <script src="/templates/js/main.js"></script>
 <script>
-$(document).ready(function() {
-    var pymChild = new pym.Child({
-        id: "iframe-customer-supply"
-    });
-    $('#mytab a[href="#cloth"]').tab('show');
-    $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
-        pymChild.sendHeight();
-    })
-    var imgnum = $("img").length;
-    var count1 = 0;
-    $("img").each(function() {
-        if (this.complete) count1 = count1 + 1;
-        if (count1 == imgnum) {
+    $(document).ready(function () {
+        var pymChild = new pym.Child({
+            id: "iframe-customer-supply"
+        });
+        $('#mytab a[href="#cloth"]').tab('show');
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
             pymChild.sendHeight();
-        }
+        })
+        var imgnum = $("img").length;
+        var count1 = 0;
+        $("img").each(function () {
+            if (this.complete) count1 = count1 + 1;
+            if (count1 == imgnum) {
+                pymChild.sendHeight();
+            }
 
-    });
-    var canvasnum = $("canvas").length;
-    var count2 = 0;
-    $("canvas").load(function() {
-        count2 = count2 + 1;
-        if (count2 == canvasnum) {
-            pymChild.sendHeight();
-        }
-    });
+        });
+        var canvasnum = $("canvas").length;
+        var count2 = 0;
+        $("canvas").load(function () {
+            count2 = count2 + 1;
+            if (count2 == canvasnum) {
+                pymChild.sendHeight();
+            }
+        });
 
-    // slider
-    var $slider = $(".slider");
-    // if ($slider.length > 0) {
-      $slider.slider({
-        min: 0,
-        max: 100,
-        value: 20,
-        orientation: "horizontal",
-        range: "min"
-      }).addSliderSegments($slider.slider("option").max);
-    // }
-    $slider.attr("style", "margin-bottom: 0px");
-});
+        // slider
+        var $slider = $(".slider");
+        $slider.slider({
+            min: 0,
+            max: 100,
+            value: 20,
+            orientation: "horizontal",
+            range: "min"
+        });
+        $("#slider1").slider({
+            value: 70
+        });
+        $("#slider2").slider({
+            value: 30
+        });
+        $("#slider3").slider({
+            value: 50
+        });
+    });
 </script>

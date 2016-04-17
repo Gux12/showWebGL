@@ -14,54 +14,86 @@
     <link rel="stylesheet" href="/templates/css/flat-ui.min.css">
     <link rel="stylesheet" href="/templates/css/main.css">
     <style>
-    body {
-        width: 100%;
-    }
+        body {
+            width: 100%;
+        }
     </style>
 </head>
 
 <body>
-    <div id="supply-step1">
-        <div class="row">
-            <div class="col-sm-6 col-md-2 col-md-offset-2">
-                <div class="thumbnail">
-                    <img src="/templates/img/cloth/Home_Preferences/s1.jpg" alt="/templates/cloth/Home_Measurement.html" style="min-height:300px;height:300px;">
-                    <div class="caption">
-                        <h3><center><input type="checkbox" style="-webkit-transform: scale(2);margin-right: 10px;">极简风格</input></center></h3>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-2">
-                <div class="thumbnail">
-                    <img src="/templates/img/cloth/Home_Preferences/s2.jpg" alt="/templates/cloth/Home_Measurement.html" style="min-height:300px;height:300px;">
-                    <div class="caption">
-                        <h3><center><input type="checkbox" style="-webkit-transform: scale(2);margin-right: 10px;">中国风</input></center></h3>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-2">
-                <div class="thumbnail">
-                    <img src="/templates/img/cloth/Home_Preferences/s3.jpg" alt="/templates/cloth/Home_Measurement.html" style="min-height:300px;height:300px;">
-                    <div class="caption">
-                        <h3><center><input type="checkbox" style="-webkit-transform: scale(2);margin-right: 10px;">牛仔</input></center></h3>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-2">
-                <div class="thumbnail">
-                    <img src="/templates/img/cloth/Home_Preferences/s4.jpg" alt="/templates/cloth/Home_Measurement.html" style="min-height:300px;height:300px;">
-                    <div class="caption">
-                        <h3><center><input type="checkbox" style="-webkit-transform: scale(2);margin-right: 10px;">英伦</input></center></h3>
-                    </div>
-                </div>
-            </div>
+<div id="supply-step1">
+    <div class="row" style="margin-top: 50px;">
+        <div class="col-sm-6 col-md-2 col-md-offset-2"
+             style="background-color: #2C3E50;padding: 0px;width: 240px;border-radius: 10px;overflow:hidden;">
+            <img class="img-responsive" src="/templates/img/cloth/Home_Preferences/p1.jpg"
+                 style="min-height:300px;height:300px;width: 240px;">
+            <h3 style="color: #16A085;margin-top: 15px;">
+                <label class="checkbox" for="checkbox0" style="margin-left: 60px;">
+                    <input type="checkbox" value="" id="checkbox0" data-toggle="checkbox" class="custom-checkbox">
+                    <span class="icons">
+                        <span class="icon-unchecked"></span>
+                        <span class="icon-checked"></span>
+                    </span>
+                    极简风格
+                </label>
+            </h3>
         </div>
-        <div class="row">
-            <center>
-                <p><center><a href="/templates/cloth/Home_Private_Custom.html" class="btn btn-primary" role="button">提交</a></center></p>
-            </center>
+        <div class="col-sm-6 col-md-2 col-md-offset-3"
+             style="background-color: #2C3E50;padding: 0px;width: 240px;border-radius: 10px;overflow:hidden;margin-left: 73px;">
+            <img class="img-responsive" src="/templates/img/cloth/Home_Preferences/p2.jpg"
+                 style="min-height:300px;height:300px;width: 240px;">
+            <h3 style="color: #16A085;margin-top: 15px;">
+                <label class="checkbox" for="checkbox1" style="margin-left: 80px;">
+                    <input type="checkbox" value="" id="checkbox1" data-toggle="checkbox" class="custom-checkbox">
+                    <span class="icons">
+                        <span class="icon-unchecked"></span>
+                        <span class="icon-checked"></span>
+                    </span>
+                    中国风
+                </label>
+            </h3>
+        </div>
+        <div class="col-sm-6 col-md-2 col-md-offset-3"
+             style="background-color: #2C3E50;padding: 0px;width: 240px;border-radius: 10px;overflow:hidden;margin-left: 73px;">
+            <img class="img-responsive" src="/templates/img/cloth/Home_Preferences/p3.jpg"
+                 style="min-height:300px;height:300px;width: 240px;">
+            <h3 style="color: #16A085;margin-top: 15px;">
+                <label class="checkbox" for="checkbox2" style="margin-left: 90px;">
+                    <input type="checkbox" value="" id="checkbox2" data-toggle="checkbox" class="custom-checkbox">
+                    <span class="icons">
+                        <span class="icon-unchecked"></span>
+                        <span class="icon-checked"></span>
+                    </span>
+                    牛仔
+                </label>
+            </h3>
+        </div>
+        <div class="col-sm-6 col-md-2 col-md-offset-3"
+             style="background-color: #2C3E50;padding: 0px;width: 240px;border-radius: 10px;overflow:hidden;margin-left: 73px;">
+            <img class="img-responsive" src="/templates/img/cloth/Home_Preferences/p4.jpg"
+                 style="min-height:300px;height:300px;width: 240px;">
+            <h3 style="color: #16A085;margin-top: 15px;">
+                <label class="checkbox" for="checkbox3" style="margin-left: 90px;">
+                    <input type="checkbox" value="" id="checkbox3" data-toggle="checkbox" class="custom-checkbox">
+                    <span class="icons">
+                        <span class="icon-unchecked"></span>
+                        <span class="icon-checked"></span>
+                    </span>
+                    英伦
+                </label>
+            </h3>
         </div>
     </div>
+    <div class="row">
+        <center>
+            <p>
+            <center><a href="/templates/cloth/Home_Private_Custom.html" class="btn btn-primary"
+                       style="margin-top: 20px;" role="button">提交</a>
+            </center>
+            </p>
+        </center>
+    </div>
+</div>
 </body>
 
 </html>
@@ -72,30 +104,30 @@
 <script src="/templates/js/vendor/pym.js"></script>
 <script src="/templates/js/main.js"></script>
 <script>
-$(document).ready(function() {
-    var pymChild = new pym.Child({
-        id: "iframe-customer-supply"
-    });
-    $('#mytab a[href="#cloth"]').tab('show');
-    $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
-        pymChild.sendHeight();
-    })
-    var imgnum = $("img").length;
-    var count1 = 0;
-    $("img").each(function() {
-        if (this.complete) count1 = count1 + 1;
-        if (count1 == imgnum) {
+    $(document).ready(function () {
+        var pymChild = new pym.Child({
+            id: "iframe-customer-supply"
+        });
+        $('#mytab a[href="#cloth"]').tab('show');
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
             pymChild.sendHeight();
-        }
+        })
+        var imgnum = $("img").length;
+        var count1 = 0;
+        $("img").each(function () {
+            if (this.complete) count1 = count1 + 1;
+            if (count1 == imgnum) {
+                pymChild.sendHeight();
+            }
 
+        });
+        var canvasnum = $("canvas").length;
+        var count2 = 0;
+        $("canvas").load(function () {
+            count2 = count2 + 1;
+            if (count2 == canvasnum) {
+                pymChild.sendHeight();
+            }
+        });
     });
-    var canvasnum = $("canvas").length;
-    var count2 = 0;
-    $("canvas").load(function() {
-        count2 = count2 + 1;
-        if (count2 == canvasnum) {
-            pymChild.sendHeight();
-        }
-    });
-});
 </script>

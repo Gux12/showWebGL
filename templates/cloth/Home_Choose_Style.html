@@ -14,77 +14,37 @@
     <link rel="stylesheet" href="/templates/css/flat-ui.min.css">
     <link rel="stylesheet" href="/templates/css/main.css">
     <style>
-    body {
-        width: 100%;
-    }
+        body {
+            width: 100%;
+        }
     </style>
 </head>
 
 <body>
-    <div id="supply-step1">
-        <div class="row">
-            <div class="col-sm-6 col-md-1 col-md-offset-2">
-                <div class="thumbnail">
-                    <img src="/templates/img/cloth/Home_Preferences/u1.jpg" alt="/templates/cloth/Home_Measurement.html" style="min-height:100px;height:100px;">
-                    <div class="caption">
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-1">
-                <div class="thumbnail">
-                    <img src="/templates/img/cloth/Home_Preferences/u2.jpg" alt="/templates/cloth/Home_Measurement.html" style="min-height:100px;height:100px;">
-                    <div class="caption">
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-1">
-                <div class="thumbnail">
-                    <img src="/templates/img/cloth/Home_Preferences/u3.jpg" alt="/templates/cloth/Home_Measurement.html" style="min-height:100px;height:100px;">
-                    <div class="caption">
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-1">
-                <div class="thumbnail">
-                    <img src="/templates/img/cloth/Home_Preferences/u4.jpg" alt="/templates/cloth/Home_Measurement.html" style="min-height:100px;height:100px;">
-                    <div class="caption">
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-1">
-                <div class="thumbnail">
-                    <img src="/templates/img/cloth/Home_Preferences/u5.jpg" alt="/templates/cloth/Home_Measurement.html" style="min-height:100px;height:100px;">
-                    <div class="caption">
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-1">
-                <div class="thumbnail">
-                    <img src="/templates/img/cloth/Home_Preferences/u6.jpg" alt="/templates/cloth/Home_Measurement.html" style="min-height:100px;height:100px;">
-                    <div class="caption">
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-1">
-                <div class="thumbnail">
-                    <img src="/templates/img/cloth/Home_Preferences/u8.jpg" alt="/templates/cloth/Home_Measurement.html" style="min-height:100px;height:100px;">
-                    <div class="caption">
-                    </div>
-                </div>
-            </div>
+<div id="supply-step1">
+    <div class="row" style="margin-top: 50px;">
+        <div class="col-sm-6 col-md-2 col-md-offset-4"
+             style="background-color: #2C3E50;padding: 0px;width: 240px;border-radius: 10px;overflow:hidden;">
+            <a href="/templates/cloth/Home_Choose_Template.html">
+                <img class="img-responsive" src="/templates/img/cloth/Home_Preferences/p5.jpg"
+                     style="min-height:300px;height:300px;width: 240px;">
+            </a>
+            <h3 style="color: #16A085;margin-top: 15px;">
+                <center>参数定制</center>
+            </h3>
         </div>
-        <dir class="row">
-            <div class="col-sm-6 col-md-7 col-md-offset-2">
-                <div class="thumbnail">
-                    <a href="/templates/cloth/Home_Choose_Attribute.html">
-                        <img src="/templates/img/cloth/Home_Preferences/u9.jpg" alt="/templates/cloth/Home_Measurement.html" style="min-height:600px;height:600px;">
-                    </a>
-                    <div class="caption">
-                    </div>
-                </div>
-            </div>
-        </dir>
+        <div class="col-sm-6 col-md-2 col-md-offset-2"
+             style="background-color: #2C3E50;padding: 0px;width: 240px;border-radius: 10px;overflow:hidden;margin-left: 60px;">
+            <a href="/templates/cloth/Home_Choose_Designer.html">
+                <img class="img-responsive" src="/templates/img/cloth/Home_Preferences/p6.jpg"
+                     style="min-height:300px;height:300px;width: 240px;">
+            </a>
+            <h3 style="color: #16A085;margin-top: 15px;">
+                <center>个性定制</center>
+            </h3>
+        </div>
     </div>
+</div>
 </body>
 
 </html>
@@ -95,30 +55,30 @@
 <script src="/templates/js/vendor/pym.js"></script>
 <script src="/templates/js/main.js"></script>
 <script>
-$(document).ready(function() {
-    var pymChild = new pym.Child({
-        id: "iframe-customer-supply"
-    });
-    $('#mytab a[href="#cloth"]').tab('show');
-    $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
-        pymChild.sendHeight();
-    })
-    var imgnum = $("img").length;
-    var count1 = 0;
-    $("img").each(function() {
-        if (this.complete) count1 = count1 + 1;
-        if (count1 == imgnum) {
+    $(document).ready(function () {
+        var pymChild = new pym.Child({
+            id: "iframe-customer-supply"
+        });
+        $('#mytab a[href="#cloth"]').tab('show');
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
             pymChild.sendHeight();
-        }
+        })
+        var imgnum = $("img").length;
+        var count1 = 0;
+        $("img").each(function () {
+            if (this.complete) count1 = count1 + 1;
+            if (count1 == imgnum) {
+                pymChild.sendHeight();
+            }
 
+        });
+        var canvasnum = $("canvas").length;
+        var count2 = 0;
+        $("canvas").load(function () {
+            count2 = count2 + 1;
+            if (count2 == canvasnum) {
+                pymChild.sendHeight();
+            }
+        });
     });
-    var canvasnum = $("canvas").length;
-    var count2 = 0;
-    $("canvas").load(function() {
-        count2 = count2 + 1;
-        if (count2 == canvasnum) {
-            pymChild.sendHeight();
-        }
-    });
-});
 </script>
